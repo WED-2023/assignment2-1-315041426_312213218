@@ -1,5 +1,6 @@
 // src/services/auth.js
 
+  let registeredUsers = [];
 
   export function mockLogin(credentials, success = true) {
     // Check if already logged in
@@ -27,5 +28,9 @@
     return { status: 200, response: { data: { message: "logout succeeded", success: true}} };
 
   }
-  
+
+
+  export function mockCheckUsernameExists(username) {
+    return registeredUsers.some(user => user.username === username);
+  }
 

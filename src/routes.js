@@ -5,28 +5,34 @@ const routes = [
   {
     path: "/",
     name: "main",
-    component: Main,
+    component: () => import("./pages/MainPage.vue"),
   },
   {
     path: "/register",
     name: "register",
-    component: () => import("./pages/RegisterPage"),
+    component: () => import("./pages/RegisterPage.vue"),
   },
   {
     path: "/login",
     name: "login",
-    component: () => import("./pages/LoginPage"),
+    component: () => import("./pages/LoginPage.vue"),
   },
   {
     path: "/search",
     name: "search",
-    component: () => import("./pages/SearchPage"),
+    component: () => import("./pages/SearchPage.vue"),
   },
   {
-    path: "   ",
-    name: "recipe",
-    component: () => import("./pages/RecipeViewPage"),
-  },
+    path: "/about",
+    name: "about",
+    component: () => import("./pages/AboutPage.vue"),
+  }
+  ,
+  // {
+  //   path: " ",
+  //   name: "recipe",
+  //   component: () => import("./pages/RecipeViewPage.vue"),
+  // },
   {
     path: "*",
     name: "notFound",
