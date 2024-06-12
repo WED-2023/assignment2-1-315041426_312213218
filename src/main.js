@@ -77,7 +77,7 @@ const shared_data = {
   logout() {
     console.log("logout");
     localStorage.removeItem("username");
-    this.username = undefined;
+    ד;
   },
 };
 console.log(shared_data);
