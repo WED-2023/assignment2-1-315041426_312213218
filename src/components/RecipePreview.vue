@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      image_load: false
+      image_load: true
     };
   },
   props: {
@@ -83,7 +83,7 @@ export default {
   margin-top: auto;
   margin-bottom: auto;
   display: block;
-  width: 98%;
+  width: 30%;
   height: auto;
   -webkit-background-size: cover;
   -moz-background-size: cover;

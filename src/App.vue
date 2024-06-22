@@ -9,13 +9,13 @@
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <span v-if="!$root.store.username" class="nav-item nav-link2">
-            Hello Guest,     
-            <router-link :to="{ name: 'login' }" class="nav-link2"> Login</router-link>
+            <span id="hello-text">Hello Guest,</span>     
+            <router-link :to="{ name: 'login' }" class="nav-link1"> Login</router-link>
             <span> | </span>
-            <router-link :to="{ name: 'register' }" class="nav-link2"> Register </router-link>
+            <router-link :to="{ name: 'register' }" class="nav-link1"> Register </router-link>
           </span>
-          <span v-else class="nav-item">
-            <b-button  variant="outline-success" @click="showModal">Add Recipe</b-button>
+          <span v-else class="nav-item nav-link2 user-menu">
+            <b-button  variant="outline-success" @click="showModal" class="nav-link2">Add Recipe</b-button>
             <b-nav-item-dropdown :text="$root.store.username" left style="font-size: 100%">
               <b-dropdown-item href="#"><router-link :to="{ name: 'my_favorite_recipes' }" class="nav-link2">My favorite recipes</router-link></b-dropdown-item>
               <b-dropdown-item href="#"><router-link :to="{ name: 'my_recipes' }" class="nav-link2">My recipes</router-link></b-dropdown-item>
@@ -87,5 +87,15 @@ export default {
   #nav router-link {
     color: white;
   }
-
+  .user-menu {
+  display: flex;
+  align-items: center;
+}
+.user-menu .nav-link1,
+.user-menu .nav-link2 {
+  margin-right: 10px;
+}
+#hello-text {
+  margin-right: 10px;
+}
 </style>
