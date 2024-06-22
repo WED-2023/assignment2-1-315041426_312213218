@@ -16,10 +16,10 @@
           </span>
           <span v-else class="nav-item nav-link2 user-menu">
             <b-button  variant="outline-success" @click="showModal" class="nav-link2">Add Recipe</b-button>
-            <b-nav-item-dropdown :text="$root.store.username" left style="font-size: 100%">
-              <b-dropdown-item href="#"><router-link :to="{ name: 'my_favorite_recipes' }" class="nav-link2">My favorite recipes</router-link></b-dropdown-item>
-              <b-dropdown-item href="#"><router-link :to="{ name: 'my_recipes' }" class="nav-link2">My recipes</router-link></b-dropdown-item>
-              <b-dropdown-item href="#"><router-link :to="{ name: 'my_family_recipes' }" class="nav-link2">My family recipes</router-link></b-dropdown-item>
+            <b-nav-item-dropdown :text="$root.store.username" id="dropdown-menu">
+              <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_favorite_recipes' }" >My favorite recipes</router-link></b-dropdown-item>
+              <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_recipes' }">My recipes</router-link></b-dropdown-item>
+              <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_family_recipes' }">My family recipes</router-link></b-dropdown-item>
             </b-nav-item-dropdown>
             <b-button class="button-4 nav-link2" variant="outline-success" @click="Logout" >Logout</b-button>
           </span>
@@ -78,24 +78,50 @@ export default {
 .nav-link.active {
   color: #f8f9fa; /* Light color for the active tab to stand out */
 }
+
 #nav-collapse {
   display: flex;
   justify-content: left; /* Center the navigation items within the collapse */
-
 }
-  /* determine the router links in the navbar to be white */
-  #nav router-link {
-    color: white;
-  }
-  .user-menu {
+
+/* Determine the router links in the navbar to be white */
+#nav router-link {
+  color: white;
+}
+
+.user-menu {
   display: flex;
   align-items: center;
 }
+
 .user-menu .nav-link1,
 .user-menu .nav-link2 {
   margin-right: 10px;
 }
+
 #hello-text {
   margin-right: 10px;
 }
+
+/* Custom dropdown background color to match the navbar */
+.b-nav-item-dropdown .dropdown-menu {
+  background-color: #343a40 !important; /* Match this color with your navbar's background color */
+  border-color: #343a40 !important; /* Optional: match the border color as well */
+}
+
+/* Custom dropdown item styles */
+.dropdown-item {
+  background-color: #343a40 !important; /* Set the dropdown item background color to black */
+  color: white !important; /* Ensure the text is visible on the black background */
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #1a1a1a !important; /* Set a slightly lighter color for hover/focus */
+}
+
+.b-nav-item-dropdown .dropdown-menu .dropdown-divider {
+  border-top-color: #6c757d !important; /* Optional: set the color of the divider */
+}
+
 </style>

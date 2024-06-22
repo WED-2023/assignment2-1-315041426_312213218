@@ -28,11 +28,11 @@ const routes = [
     component: () => import("./pages/AboutPage.vue"),
   }
   ,
-  // {
-  //   path: " ",
-  //   name: "recipe",
-  //   component: () => import("./pages/RecipeViewPage.vue"),
-  // },
+  {
+    path: "/recipe",
+    name: "recipe",
+    component: () => import("./pages/RecipeViewPage.vue"),
+  },
   {
     path: "*",
     name: "notFound",
