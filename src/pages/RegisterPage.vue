@@ -175,5 +175,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   max-width: 500px;
+  margin-top: 5%;
+  margin-bottom:5%;
 }
 </style>

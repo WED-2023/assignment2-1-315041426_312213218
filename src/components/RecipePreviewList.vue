@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <h3>
-      {{ title }}:
+      {{ title }}
       <slot></slot>
     </h3>
     <b-row>
@@ -37,14 +37,14 @@ export default {
   methods: {
     async updateRecipes() {
       try {
-        recipes
+        
         // const response = await this.axios.get(
         //   this.$root.store.server_domain + "/recipes/random",
         // );
 
         const amountToFetch = 5; // Set this to how many recipes you want to fetch
         const response = mockGetRecipesPreview(amountToFetch);
-        
+
 
         console.log(response);
         const recipes = response.data.recipes;

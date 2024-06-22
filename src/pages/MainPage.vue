@@ -1,31 +1,33 @@
 <template>
-  <div class="container">
-    <h1 class="title">Main Page</h1>
-    <RecipePreviewList title="Randome Recipes" class="RandomRecipes center" />
-    <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link>
-    {{ !$root.store.username }}
-    <RecipePreviewList
-      title="Last Viewed Recipes"
-      :class="{
-        RandomRecipes: true,
-        blur: !$root.store.username,
-        center: true
-      }"
-      disabled
-    ></RecipePreviewList>
-    <!-- <div
-      style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
-    >
-      Centeredasdasdad
-    </div>-->
+  <div>
+    <div class="container">
+      <h1 class="title text-center">Main Page</h1>
+      <br>
+      <b-row>
+        <b-col>
+          <RandomRecipes class="text-center" title="Random Recipes" style="text-shadow: #fff8f8 1px 0 30px"/>
+        </b-col>
+        <b-col v-if="!$root.store.username" class="login-container">
+          <LoginPage></LoginPage>
+        </b-col>
+        <b-col v-else>
+          <WatchedRecipes class="text-center" title="Last Viewed Recipes" style="text-shadow: #fff8f8 1px 0 30px"></WatchedRecipes>
+        </b-col>
+      </b-row>
+    </div>
   </div>
 </template>
 
 <script>
-import RecipePreviewList from "../components/RecipePreviewList";
+import RandomRecipes from "../components/RandomRecipes";
+import WatchedRecipes from "../components/WatchedRecipes";
+import LoginPage from "../pages/LoginPage";
+
 export default {
   components: {
-    RecipePreviewList
+    RandomRecipes,
+    WatchedRecipes,
+    LoginPage
   }
 };
 </script>
@@ -41,5 +43,11 @@ export default {
 ::v-deep .blur .recipe-preview {
   pointer-events: none;
   cursor: default;
+}
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
 }
 </style>
