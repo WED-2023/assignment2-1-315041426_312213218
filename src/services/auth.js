@@ -30,24 +30,24 @@
   }
 
 
-  export function mockCheckUsernameExists(username) {
-    return registeredUsers.some(user => user.username === username);
-  }
+  // export function mockCheckUsernameExists(username) {
+  //   return registeredUsers.some(user => user.username === username);
+  // }
 
-  export function mockRegister(userDetails) {
-    registeredUsers.push(userDetails);
-    return { success: true };
-  }
+  // export function mockRegister(userDetails) {
+  //   registeredUsers.push(userDetails);
+  //   return { success: true };
+  // }
   
   export function mockCheckUsernameExists(username) {
     return registeredUsers.some(user => user.username === username);
   }
   
-  export function mockLogin(username, password) {
-    const user = registeredUsers.find(user => user.username === username && user.password === password);
-    if (user) {
-      return { success: true };
-    } else {
-      return { success: false, message: "Invalid username or password" };
-    }
-  }
+  // export function mockLogin(username, password) {
+  //   const user = registeredUsers.find(user => user.username === username && user.password === password);
+  //   if (user) {
+  //     return { success: true };
+  //   } else {
+  //     return { success: false, message: "Invalid username or password" };
+  //   }
+  // }
