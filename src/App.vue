@@ -21,7 +21,7 @@
               <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_recipes' }">My recipes</router-link></b-dropdown-item>
               <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_family_recipes' }">My family recipes</router-link></b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-button class="button-4 nav-link2" variant="outline-success" @click="Logout" >Logout</b-button>
+            <b-button class="button-4 nav-link2" variant="outline-danger" @click="Logout" >Logout</b-button>
           </span>
         </b-navbar-nav>
       </b-navbar>
