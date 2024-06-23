@@ -12,6 +12,7 @@
       <ul class="recipe-overview">
         <li>{{ recipe.readyInMinutes }} minutes</li>
         <li>{{ recipe.aggregateLikes }} likes</li>
+        <li v-if="recipe.vegan"><img v-if="recipe.vegan" src="../assets/vegan-friendly-icon.jpg" alt="vegan" class="vegan-icon"></li>
       </ul>
     </div>
   </router-link>
@@ -31,7 +32,7 @@ export default {
   },
   data() {
     return {
-      image_load: true
+      image_load: false
     };
   },
   props: {
@@ -56,10 +57,16 @@ export default {
 <style scoped>
 .recipe-preview {
   display: inline-block;
-  width: 90%;
+  width: 80%;
   height: 100%;
   position: relative;
   margin: 10px 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth animation */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+}
+.recipe-preview:hover {
+  transform: translateY(-5px); /* Move up slightly on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Add a shadow effect on hover */
 }
 .recipe-preview > .recipe-body {
   width: 100%;
@@ -82,8 +89,8 @@ export default {
 
 .recipe-preview .recipe-footer {
   width: 100%;
-  height: 50%;
-  overflow: hidden;
+  height: 30%;
+  
 }
 
 .recipe-preview .recipe-footer .recipe-title {
@@ -127,5 +134,11 @@ export default {
   width: 90px;
   display: table-cell;
   text-align: center;
+}
+
+.vegan-icon {
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
 }
 </style>
