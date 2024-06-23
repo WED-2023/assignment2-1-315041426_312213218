@@ -83,7 +83,7 @@ export default {
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth animation */
   cursor: default; /* Default cursor for the whole preview */
   background-color: whitesmoke;
-  padding: 0;
+  padding: 5px;
 }
 .recipe-preview:hover {
   transform: translateY(-5px); /* Move up slightly on hover */

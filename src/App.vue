@@ -15,7 +15,7 @@
             <router-link :to="{ name: 'register' }" class="nav-link1"> Register </router-link>
           </span>
           <span v-else class="nav-item nav-link2 user-menu">
-            <b-button  variant="outline-success" @click="showModal" class="nav-link2">Add Recipe</b-button>
+            <b-button variant="outline-success" @click="$bvModal.show('modal-prevent-closing')" class="nav-link2">Add Recipe</b-button>
             <b-nav-item-dropdown :text="$root.store.username" id="dropdown-menu">
               <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'favorites' }" >My favorite recipes</router-link></b-dropdown-item>
               <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_recipes' }">My recipes</router-link></b-dropdown-item>
@@ -27,12 +27,69 @@
       </b-navbar>
       <router-view />
     </div>
+    
+    <b-modal
+      id="modal-prevent-closing"
+      ref="modal"
+      title="Submit Your Recipe"
+      @show="resetModal"
+      @hidden="resetModal"
+      @ok="handleOk"
+    >
+      <form ref="form" @submit.stop.prevent="handleSubmit">
+        <b-form-group label="Recipe Name" label-for="name-input">
+          <b-form-input
+            id="name-input"
+            v-model="recipe.name"
+            :state="nameState"
+            required
+          ></b-form-input>
+        </b-form-group>
+        
+        <b-form-group label="Ingredients" label-for="ingredients-input">
+          <div v-for="(ingredient, index) in recipe.ingredients" :key="index" class="mb-2">
+            <b-form-input
+              v-model="recipe.ingredients[index]"
+              placeholder="Enter ingredient"
+            ></b-form-input>
+          </div>
+          <b-button size="sm" @click="addIngredient">Add Ingredient</b-button>
+        </b-form-group>
+        
+        <b-form-group label="Instructions" label-for="instructions-input">
+          <div v-for="(instruction, index) in recipe.instructions" :key="index" class="mb-2">
+            <b-form-input
+              v-model="recipe.instructions[index]"
+              placeholder="Enter instruction"
+            ></b-form-input>
+          </div>
+          <b-button size="sm" @click="addInstruction">Add Instruction</b-button>
+        </b-form-group>
+        
+        <b-form-group>
+          <b-form-checkbox v-model="recipe.glutenFree">Gluten Free</b-form-checkbox>
+          <b-form-checkbox v-model="recipe.vegan">Vegan</b-form-checkbox>
+        </b-form-group>
+      </form>
+    </b-modal>
   </div>
 </template>
 
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      recipe: {
+        name: '',
+        ingredients: [''],
+        instructions: [''],
+        glutenFree: false,
+        vegan: false,
+      },
+      nameState: null,
+    };
+  },
   methods: {
     Logout() {
       this.$root.store.logout();
@@ -43,6 +100,45 @@ export default {
     },
     IsUserLoggedIn() {
       return this.$root.store.username !== undefined;
+    },
+    checkFormValidity() {
+      const valid = this.$refs.form.checkValidity();
+      this.nameState = valid;
+      return valid;
+    },
+    resetModal() {
+      this.recipe = {
+        name: '',
+        ingredients: [''],
+        instructions: [''],
+        glutenFree: false,
+        vegan: false,
+      };
+      this.nameState = null;
+    },
+    handleOk(bvModalEvent) {
+      // Prevent modal from closing
+      bvModalEvent.preventDefault();
+      // Trigger submit handler
+      this.handleSubmit();
+    },
+    handleSubmit() {
+      // Exit when the form isn't valid
+      if (!this.checkFormValidity()) {
+        return;
+      }
+      // Here you can handle the form submission, e.g., send the data to the server
+      console.log("Recipe submitted:", this.recipe);
+      // Hide the modal manually
+      this.$nextTick(() => {
+        this.$bvModal.hide('modal-prevent-closing');
+      });
+    },
+    addIngredient() {
+      this.recipe.ingredients.push('');
+    },
+    addInstruction() {
+      this.recipe.instructions.push('');
     }
   }
 };
@@ -124,5 +220,4 @@ export default {
 .b-nav-item-dropdown .dropdown-menu .dropdown-divider {
   border-top-color: #6c757d !important; /* Optional: set the color of the divider */
 }
-
 </style>
