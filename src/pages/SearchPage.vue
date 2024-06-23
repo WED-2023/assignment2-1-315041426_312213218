@@ -1,15 +1,30 @@
 <template>
-  <div class="container recipe-search-container">
-    <h1 class="title">Search Page</h1>
-    <b-form @submit.prevent="searchRecipes">
-      <b-form-group label="Search by recipe name:">
-        <div class="d-flex align-items-center">
-          <b-form-input v-model="searchQuery" placeholder="Enter recipe to search"></b-form-input>
-          <b-button variant="link" @click="toggleFilters" class="ml-2">
-            <i class="fi fi-rs-filter"></i>
-          </b-button>
-        </div>
-      </b-form-group>
+  <div class="container">
+    <h1 class="title mt-5 mb-0 pt-5 pb-0">Search Page</h1>
+    <b-form @submit.prevent="searchRecipes" class="pt-0 mt-0">
+      <div class="recipe-search-container">
+        <b-form-group>
+          <div class="container-search">
+            <b-form-input v-model="searchQuery" placeholder="Enter recipe to search" class="ml-0 mr-3"></b-form-input>
+                <label class="mb-0 mr-2">Results:</label>
+                <b-form-input
+                  v-model="resultsLimit"
+                  type="number"
+                  min="1"
+                  max="50"
+                  placeholder="Results"
+                  class="results-input"
+                ></b-form-input>
+              
+                <b-icon icon="filter-circle" @click="toggleFilters" class="filter-icon mx-2"></b-icon>
+                <div class="buttons-container">
+                  <b-button type="submit" variant="primary" class="ml-2">Search</b-button>
+                  <b-button type="button" variant="secondary" @click="clearResults" class="ml-2">Clear Results</b-button>
+                  <b-button type="button" variant="danger" @click="clearFilters" class="ml-2">Clear Filters</b-button>
+                </div>
+          </div>
+        </b-form-group>
+      </div>
       <transition name="fade">
         <div v-if="showFilters" class="filters-container">
           <b-form-group label="Filter by cuisine:">
@@ -23,19 +38,15 @@
           </b-form-group>
         </div>
       </transition>
-      <b-form-group label="Number of results:">
-        <b-form-select v-model="resultsLimit" :options="resultsLimits"></b-form-select>
-      </b-form-group>
-      <b-button type="submit" variant="primary">Search</b-button>
-      <b-button type="button" variant="secondary" @click="clearResults">Clear Results</b-button>
-      <b-button type="button" variant="danger" @click="clearFilters">Clear Filters</b-button>
     </b-form>
 
     <div v-if="searchResults.length" class="search-results">
-      <h2>Search Results</h2>
-      <b-form-group label="Sort by:">
-        <b-form-select v-model="sortOption" :options="sortOptions"></b-form-select>
+      <div class="sort-container">
+      <h2 class="mr-2">Search Results</h2>
+      <b-form-group>
+        <b-form-select v-model="sortOption" :options="sortOptions" class="ml-2"></b-form-select>
       </b-form-group>
+    </div>
       <div v-for="recipe in sortedResults" :key="recipe.id" class="recipe-preview">
         <router-link :to="{ name: 'recipe-display', params: { id: recipe.id } }">
           <img :src="recipe.image" :alt="recipe.title" />
@@ -49,6 +60,10 @@
     </div>
   </div>
 </template>
+
+
+
+
 
 <script>
 export default {
@@ -150,12 +165,15 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .recipe-search-container {
-  max-width: 800px;
+  min-width: 800px;
   margin: 0 auto;
-  padding: 20px;
-  margin-top: 50px;
+  padding: 0px;
+  margin-top: 10px;
+  display:flex;
+  justify-content: start;
 }
 
 .search-results {
@@ -208,4 +226,45 @@ export default {
 .filters-container .b-form-checkbox-group {
   margin-left: 20px;
 }
+
+.results-input {
+  width: 80px;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container .d-flex {
+  flex-wrap: wrap;
+}
+
+.form-container .d-flex > .d-flex {
+  margin-bottom: 10px;
+}
+
+.form-container .d-flex > .ml-2 {
+  margin-top: 10px;
+}
+.buttons-container {
+  display: flex;
+  margin-top: 10px;
+  max-height: 50px;
+  max-width: 100%;
+}
+.sort-container {
+  display: flex;
+  justify-content:start;
+  align-items: center;
+  margin-top: 20px;
+}
+.container-search {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
 </style>
+
+
+

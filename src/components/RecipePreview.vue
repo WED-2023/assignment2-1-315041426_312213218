@@ -76,14 +76,14 @@ export default {
 
 <style scoped>
 .recipe-preview {
-  display: inline-block;
-  width: 80%;
-  height: 100%;
+  display: block;
+  width:80%;
   position: relative;
-  margin: 10px 10px;
+  margin-top:10%;
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth animation */
   cursor: default; /* Default cursor for the whole preview */
   background-color: whitesmoke;
+  padding: 5px;
 }
 .recipe-preview:hover {
   transform: translateY(-5px); /* Move up slightly on hover */
@@ -95,10 +95,6 @@ export default {
   position: relative;
 }
 .recipe-preview .recipe-body .recipe-image {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: auto;
-  margin-bottom: auto;
   display: block;
   width: 100%;
   height: 100%;
@@ -137,7 +133,7 @@ export default {
 }
 .recipe-preview .recipe-footer {
   width: 100%;
-  height: 30%;
+  height: 100%;
 }
 .recipe-preview .recipe-footer .recipe-title {
   padding: 10px 10px;
