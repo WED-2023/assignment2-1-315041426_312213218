@@ -140,7 +140,7 @@ export default {
         }
 
         const response = mockRegister(userDetails);
-        this.$router.push("/login");
+        this.$router.push({ name: 'main' });
       } catch (err) {
         console.log(err.response);
         this.form.submitError = err.response.data.message;
@@ -152,6 +152,8 @@ export default {
         return;
       }
       this.Register();
+      this.$root.toast("Register", "User Register is successfully", "success");
+      
     },
     onReset() {
       this.form = {

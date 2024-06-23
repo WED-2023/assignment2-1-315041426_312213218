@@ -30,8 +30,8 @@
   }
 
 
-  // export function mockCheckUsernameExists(username) {
-  //   return registeredUsers.some(user => user.username === username);
-  // }
+  export function mockCheckUsernameExists(username) {
+    return registeredUsers.some(user => user.username === username);
+  }
 
 // meow meow

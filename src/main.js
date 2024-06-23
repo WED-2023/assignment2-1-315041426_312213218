@@ -5,6 +5,12 @@ import axios from "axios";
 
 import routes from "./routes";
 import VueRouter from "vue-router";
+
+// Make BootstrapVue available throughout your project
+Vue.use(BootstrapVue)
+// install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
+
 Vue.use(VueRouter);
 const router = new VueRouter({
   routes,
@@ -13,6 +19,7 @@ const router = new VueRouter({
 import Vuelidate from "vuelidate";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import {
   FormGroupPlugin,
   FormPlugin,

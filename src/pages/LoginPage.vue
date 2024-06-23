@@ -74,10 +74,10 @@ export default {
     onLogin() {
       this.form.submitError = undefined;
       this.$v.form.$touch();
-      this.$root.toast("Login", "User logged in successfully", "success");
       if (this.$v.form.$anyError) {
         return;
       }
+      this.$root.toast("Login", "User logged in successfully", "success");
       this.Login();
     }
   }
