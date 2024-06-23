@@ -13,6 +13,7 @@
         <li>{{ recipe.readyInMinutes }} minutes</li>
         <li>{{ recipe.aggregateLikes }} likes</li>
         <li v-if="recipe.vegan"><img v-if="recipe.vegan" src="../assets/vegan-friendly-icon.jpg" alt="vegan" class="vegan-icon"></li>
+        <li v-if="recipe.glutenFree"><img v-if="recipe.glutenFree" src="../assets/gluten-free.png" alt="vegan" class="vegan-icon"></li>
       </ul>
     </div>
   </router-link>
