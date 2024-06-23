@@ -1,11 +1,11 @@
 <template>
-  <div class="container justify-content-start">
+  <div class="container">
     <h1 class="title mt-5 mb-0 pt-5 pb-0">Search Page</h1>
     <b-form @submit.prevent="searchRecipes" class="pt-0 mt-0">
       <div class="recipe-search-container">
-        <b-form-group class="recipe-search-container">
-          <div class="d-flex align-items-center justify-content-start">
-            <b-form-input v-model="searchQuery" placeholder="Enter recipe to search"  ></b-form-input>
+        <b-form-group>
+          <div class="container-search">
+            <b-form-input v-model="searchQuery" placeholder="Enter recipe to search" class="ml-0 mr-3"></b-form-input>
                 <label class="mb-0 mr-2">Results:</label>
                 <b-form-input
                   v-model="resultsLimit"
@@ -258,6 +258,11 @@ export default {
   justify-content:start;
   align-items: center;
   margin-top: 20px;
+}
+.container-search {
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 </style>
 
