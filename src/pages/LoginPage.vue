@@ -58,10 +58,14 @@ export default {
         // Assuming mockLogin returns a success status
         if (response.response.data.success) {
           this.$root.store.login(this.form.username);
-          this.$router.push("/");
-        } else {
+            // Ensure not navigating to the same route
+            if (this.$router.currentRoute.path !== '/') {
+            this.$router.push("/");
+        } 
+        else {
           throw new Error(response.message || "Login failed");
         }
+      }
       } catch (err) {
         console.log(err.message);
         this.form.submitError = err.message;

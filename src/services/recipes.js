@@ -16,3 +16,11 @@ export function mockGetRecipeFullDetails(recipeId) {
     return { data: { recipe: recipe_full_view } } ;
   }
   
+  export function getLastWatchedRecipes(amount = 3) {
+    let recipes = [];
+    for(let i = 0; i < amount; i++){
+      recipes.push(recipe_preview);
+    }
+  
+    return { data: { recipes: recipes } };
+  }

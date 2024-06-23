@@ -2,6 +2,7 @@
   <router-link
     :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
     class="recipe-preview"
+    @click.native="handleRecipeClick"
   >
     <div class="recipe-body">
       <img v-if="image_load" :src="recipe.image" class="recipe-image" />
@@ -21,9 +22,14 @@
 <script>
 export default {
   mounted() {
-    this.axios.get(this.recipe.image).then((i) => {
+    const img = new Image();
+    img.src = this.recipe.image;
+    img.onload = () => {
       this.image_load = true;
-    });
+    };
+    img.onerror = () => {
+      console.error('Image failed to load');
+    };
   },
   data() {
     return {
@@ -35,30 +41,16 @@ export default {
       type: Object,
       required: true
     }
-
-    // id: {
-    //   type: Number,
-    //   required: true
-    // },
-    // title: {
-    //   type: String,
-    //   required: true
-    // },
-    // readyInMinutes: {
-    //   type: Number,
-    //   required: true
-    // },
-    // image: {
-    //   type: String,
-    //   required: true
-    // },
-    // aggregateLikes: {
-    //   type: Number,
-    //   required: false,
-    //   default() {
-    //     return undefined;
-    //   }
-    // }
+  },
+  methods: {
+    handleRecipeClick() {
+      // Check if the recipe is already in the watched list
+      const watchedRecipes = this.$root.store.lastWatchedRecipes;
+      if (!watchedRecipes.find(r => r.id === this.recipe.id)) {
+        this.$root.store.lastWatchedRecipes.push(this.recipe);
+        localStorage.setItem("lastWatchedRecipes", JSON.stringify(this.$root.store.lastWatchedRecipes));
+      }
+    }
   }
 };
 </script>
@@ -83,8 +75,8 @@ export default {
   margin-top: auto;
   margin-bottom: auto;
   display: block;
-  width: 30%;
-  height: auto;
+  width: 100%;
+  height: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;

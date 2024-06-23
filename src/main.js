@@ -69,16 +69,20 @@ Vue.config.productionTip = false;
 const shared_data = {
   server_domain: "http://localhost:3000",
   username: localStorage.username,
+  lastWatchedRecipes: [],
+
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;
+    this.lastWatchedRecipes = [];
     console.log("login", this.username);
+
   },
   logout() {
     console.log("logout");
     localStorage.removeItem("username");
     this.username = undefined;
-    this.LastSearchRecipes = [];
+    this.lastWatchedRecipes = [];
   },
 };
 console.log(shared_data);
