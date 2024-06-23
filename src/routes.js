@@ -29,7 +29,7 @@ const routes = [
   }
   ,
   {
-    path: "/recipe",
+    path: "/recipe/:id",
     name: "recipe",
     component: () => import("./pages/RecipeViewPage.vue"),
   },
