@@ -4,7 +4,11 @@ import recipe_preview from "../assets/mocks/recipe_preview.json";
 
 
   export function mockAddFavorite(recipeId) {
-    return { status: 200, response: { data: { message: "The Recipe successfully saved as favorite", success: true}} };
+    return { status: 200, response: { data: { message: "The Recipe successfully saved as a favorite", success: true}} };
+  }
+
+  export function mockRemoveFavorite(recipeId) {
+    return { status: 200, response: { data: { message: "The Recipe successfully Removed from favorites", success: true}} };
   }
   
   export function mockAddUserRecipe(recipeDetails) {

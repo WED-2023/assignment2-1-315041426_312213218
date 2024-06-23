@@ -24,3 +24,11 @@ export function mockGetRecipeFullDetails(recipeId) {
   
     return { data: { recipes: recipes } };
   }
+
+  export function mockGetUserFavoriteRecipes(userId){
+    let recipes = [];
+    for (let index = 0; index < 2; index++) {
+      recipes.push(recipe_preview);
+      
+    }
+  }
