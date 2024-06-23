@@ -107,6 +107,7 @@ export default {
 .b-nav-item-dropdown .dropdown-menu {
   background-color: #343a40 !important; /* Match this color with your navbar's background color */
   border-color: #343a40 !important; /* Optional: match the border color as well */
+  color: black;
 }
 
 /* Custom dropdown item styles */
