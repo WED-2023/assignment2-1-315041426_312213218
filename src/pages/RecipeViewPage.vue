@@ -12,7 +12,7 @@
               <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
               <div>Likes: {{ recipe.aggregateLikes }} likes</div>
             </div>
-            Ingredients:
+            <strong id="ingredients">Ingredients:</strong>
             <ul>
               <li
                 v-for="(r, index) in recipe.extendedIngredients"
@@ -22,8 +22,9 @@
               </li>
             </ul>
           </div>
-          <div class="wrapped">
-            Instructions:
+          <div class="instructions">
+            <strong>Instructions:</strong>
+            <!-- {{ recipe.instructions }} -->
             <ol>
               <li v-for="s in recipe._instructions" :key="s.number">
                 {{ s.step }}
@@ -32,11 +33,11 @@
           </div>
         </div>
       </div>
-      <!-- <pre>
-      {{ $route.params }}
-      {{ recipe }}
+      <pre>
+      <!-- {{ $route.params }}
+      {{ recipe }} -->
     </pre
-      > -->
+      >
     </div>
   </div>
 </template>
@@ -52,7 +53,7 @@ export default {
   async created() {
     try {
       let response;
-      // response = this.$route.params.response;
+      response = this.$route.params.response;
 
       try {
         // response = await this.axios.get(
@@ -65,7 +66,7 @@ export default {
         response = mockGetRecipeFullDetails(this.$route.params.recipeId);
 
         // console.log("response.status", response.status);
-        if (response.status !== 200) this.$router.replace("/NotFound");
+        // if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
         console.log("error.response.status", error.response.status);
         this.$router.replace("/NotFound");
@@ -84,7 +85,7 @@ export default {
 
       let _instructions = analyzedInstructions
         .map((fstep) => {
-          fstep.steps[0].step = fstep.name + fstep.steps[0].step;
+          fstep.steps[0].step = fstep.steps[0].step;
           return fstep.steps;
         })
         .reduce((a, b) => [...a, ...b], []);
@@ -109,8 +110,23 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.recipe-header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recipe-body {
+  display: block;
+}
+.container {
+  margin-top: 7%;
+  display: block;
+}
+.instructions{
+  display: block;
+}
+.wrapper {
+  display: block;
 }
 .wrapped {
   width: 50%;
@@ -120,6 +136,12 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+.wrapped strong {
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: left; /* Ensures the text is aligned to the left */
 }
 /* .recipe-header{
 

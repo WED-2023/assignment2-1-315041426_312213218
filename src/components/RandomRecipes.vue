@@ -48,13 +48,17 @@
   
   <style scoped>
   /* Your styles here */
+  .discover-more{
+    display: table-cell;
+    margin: 10px 200px;
+    vertical-align: middle;
+  }
   .more {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2%;
-    width: 56%;
-    margin-left: 22%;
+      display: block;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2%;
+      width: 56%;
+      margin-left: 22%;
   }
   </style>
-  

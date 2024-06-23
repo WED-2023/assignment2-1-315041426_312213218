@@ -1,11 +1,10 @@
 <template>
-  <router-link
-    :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
-    class="recipe-preview"
-    @click.native="handleRecipeClick"
-  >
+  <div class="recipe-preview" >
     <div class="recipe-body">
-      <img v-if="image_load" :src="recipe.image" class="recipe-image" />
+      <img v-if="image_load" :src="recipe.image" class="recipe-image"  @click="GoToFullRecipePage(recipe.id)">
+      <div class="overlay" @click="GoToFullRecipePage(recipe.id)">
+        <div class="overlay-text">View Full Recipe</div>
+      </div>
     </div>
     <div class="recipe-footer">
       <div :title="recipe.title" class="recipe-title">
@@ -14,12 +13,20 @@
       <ul class="recipe-overview">
         <li>{{ recipe.readyInMinutes }} minutes</li>
         <li>{{ recipe.aggregateLikes }} likes</li>
+        <li><b-button :class="{'favorite-button': true, 'favorite-active': isFavorite}" variant="outline-warning" @click="toggleFavorite">
+              {{ isFavorite ? "Remove from Favorites" : "Add to Favorites" }}
+            </b-button>
+        </li>
+        <li v-if="recipe.vegan"><img v-if="recipe.vegan" src="../assets/vegan-friendly-icon.jpg" alt="vegan" class="vegan-icon"></li>
+        <li v-if="recipe.glutenFree"><img v-if="recipe.glutenFree" src="../assets/gluten-free.png" alt="vegan" class="vegan-icon"></li>
       </ul>
     </div>
-  </router-link>
+  </div>
 </template>
 
+
 <script>
+import { mockAddFavorite, mockRemoveFavorite } from "../services/user.js";
 export default {
   mounted() {
     const img = new Image();
@@ -28,12 +35,13 @@ export default {
       this.image_load = true;
     };
     img.onerror = () => {
-      console.error('Image failed to load');
+      console.error("Image failed to load");
     };
   },
   data() {
     return {
-      image_load: true
+      image_load: false,
+      isFavorite: false
     };
   },
   props: {
@@ -43,32 +51,49 @@ export default {
     }
   },
   methods: {
-    handleRecipeClick() {
-      // Check if the recipe is already in the watched list
-      const watchedRecipes = this.$root.store.lastWatchedRecipes;
-      if (!watchedRecipes.find(r => r.id === this.recipe.id)) {
-        this.$root.store.lastWatchedRecipes.push(this.recipe);
-        localStorage.setItem("lastWatchedRecipes", JSON.stringify(this.$root.store.lastWatchedRecipes));
-      }
+    toggleFavorite(event) {
+      event.stopPropagation();
+      this.isFavorite ? this.removeFromFavorites() : this.addToFavorites();
+    },
+    addToFavorites() {
+      this.isFavorite = true;
+     const response =  mockAddFavorite(this.recipe.id); // Simulate adding to backend
+     console.log(response.response.data.message);
+     
+    },
+    removeFromFavorites() {
+      this.isFavorite = false;
+      const response = mockRemoveFavorite(this.recipe.id); // Simulate removing from backend
+      console.log(response.response.data.message);
+    },
+    GoToFullRecipePage(recipeId) {
+      this.$router.push({ name: 'recipe', params: { recipeId } });
     }
   }
 };
 </script>
 
+
 <style scoped>
 .recipe-preview {
   display: inline-block;
-  width: 90%;
+  width: 80%;
   height: 100%;
   position: relative;
   margin: 10px 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth animation */
+  cursor: default; /* Default cursor for the whole preview */
+  background-color: whitesmoke;
+}
+.recipe-preview:hover {
+  transform: translateY(-5px); /* Move up slightly on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Add a shadow effect on hover */
 }
 .recipe-preview > .recipe-body {
   width: 100%;
   height: 200px;
   position: relative;
 }
-
 .recipe-preview .recipe-body .recipe-image {
   margin-left: auto;
   margin-right: auto;
@@ -80,14 +105,40 @@ export default {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+  transition: opacity 0.3s ease; /* Smooth transition for opacity */
 }
-
+.recipe-preview:hover .recipe-body .recipe-image {
+  opacity: 0.7; /* Make image darker on hover */
+}
+.recipe-preview .recipe-body .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+}
+.recipe-preview:hover .recipe-body .overlay {
+  opacity: 1;
+}
+.recipe-preview .recipe-body .overlay-text {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
 .recipe-preview .recipe-footer {
   width: 100%;
-  height: 50%;
-  overflow: hidden;
+  height: 30%;
 }
-
 .recipe-preview .recipe-footer .recipe-title {
   padding: 10px 10px;
   width: 100%;
@@ -98,7 +149,6 @@ export default {
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-
 .recipe-preview .recipe-footer ul.recipe-overview {
   padding: 5px 10px;
   width: 100%;
@@ -117,7 +167,6 @@ export default {
   table-layout: fixed;
   margin-bottom: 0px;
 }
-
 .recipe-preview .recipe-footer ul.recipe-overview li {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
@@ -130,4 +179,19 @@ export default {
   display: table-cell;
   text-align: center;
 }
+.vegan-icon {
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
+}
+.favorite-button {
+  display: block;
+  margin: 10px auto;
+}
+.favorite-active {
+  background-color: orange !important;
+  border-color: orange !important;
+  color: white !important;
+}
 </style>
+
