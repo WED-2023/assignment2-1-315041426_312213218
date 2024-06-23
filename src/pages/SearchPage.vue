@@ -7,14 +7,11 @@
           <div class="container-search">
             <b-form-input v-model="searchQuery" placeholder="Enter recipe to search" class="ml-0 mr-3"></b-form-input>
                 <label class="mb-0 mr-2">Results:</label>
-                <b-form-input
-                  v-model="resultsLimit"
-                  type="number"
-                  min="1"
-                  max="50"
-                  placeholder="Results"
-                  class="results-input"
-                ></b-form-input>
+                <b-form-select
+              v-model="resultsLimit"
+              :options="resultsLimits"
+              class="results-select"
+            ></b-form-select>
               
                 <b-icon icon="filter-circle" @click="toggleFilters" class="filter-icon mx-2"></b-icon>
                 <div class="buttons-container">
@@ -40,23 +37,13 @@
       </transition>
     </b-form>
 
-    <div v-if="searchResults.length" class="search-results">
+    <div class="search-results">
       <div class="sort-container">
       <h2 class="mr-2">Search Results</h2>
       <b-form-group>
         <b-form-select v-model="sortOption" :options="sortOptions" class="ml-2"></b-form-select>
       </b-form-group>
     </div>
-      <div v-for="recipe in sortedResults" :key="recipe.id" class="recipe-preview">
-        <router-link :to="{ name: 'recipe-display', params: { id: recipe.id } }">
-          <img :src="recipe.image" :alt="recipe.title" />
-          <h3>{{ recipe.title }}</h3>
-        </router-link>
-        <p>{{ recipe.instructions }}</p>
-      </div>
-    </div>
-    <div v-else-if="searchPerformed" class="no-results">
-      <p>No relevant results found.</p>
     </div>
   </div>
 </template>
@@ -263,6 +250,13 @@ export default {
   display: flex;
   justify-content: start;
   align-items: center;
+}
+.results-input {
+  width: 80px;
+}
+
+.results-select {
+  width: 15%;
 }
 </style>
 
