@@ -3,17 +3,26 @@
     <h1 class="title">Search Page</h1>
     <b-form @submit.prevent="searchRecipes">
       <b-form-group label="Search by recipe name:">
-        <b-form-input v-model="searchQuery" placeholder="Enter recipe name"></b-form-input>
+        <div class="d-flex align-items-center">
+          <b-form-input v-model="searchQuery" placeholder="Enter recipe to search"></b-form-input>
+          <b-button variant="link" @click="toggleFilters" class="ml-2">
+            <i class="fi fi-rs-filter"></i>
+          </b-button>
+        </div>
       </b-form-group>
-      <b-form-group label="Filter by cuisine:">
-        <b-form-select v-model="selectedCuisine" :options="cuisines"></b-form-select>
-      </b-form-group>
-      <b-form-group label="Filter by diet:">
-        <b-form-select v-model="selectedDiet" :options="diets"></b-form-select>
-      </b-form-group>
-      <b-form-group label="Filter by intolerance:">
-        <b-form-select v-model="selectedIntolerance" :options="intolerances"></b-form-select>
-      </b-form-group>
+      <transition name="fade">
+        <div v-if="showFilters" class="filters-container">
+          <b-form-group label="Filter by cuisine:">
+            <b-form-checkbox-group v-model="selectedCuisine" :options="cuisineOptions" stacked></b-form-checkbox-group>
+          </b-form-group>
+          <b-form-group label="Filter by diet:">
+            <b-form-checkbox-group v-model="selectedDiet" :options="dietOptions" stacked></b-form-checkbox-group>
+          </b-form-group>
+          <b-form-group label="Filter by intolerance:">
+            <b-form-checkbox-group v-model="selectedIntolerance" :options="intoleranceOptions" stacked></b-form-checkbox-group>
+          </b-form-group>
+        </div>
+      </transition>
       <b-form-group label="Number of results:">
         <b-form-select v-model="resultsLimit" :options="resultsLimits"></b-form-select>
       </b-form-group>
@@ -47,16 +56,17 @@ export default {
   data() {
     return {
       searchQuery: "",
-      selectedCuisine: "",
-      selectedDiet: "",
-      selectedIntolerance: "",
+      selectedCuisine: [],
+      selectedDiet: [],
+      selectedIntolerance: [],
       resultsLimit: 5,
       searchResults: [],
       searchPerformed: false,
       sortOption: "",
-      cuisines: ["No Filter", "Italian", "Chinese", "American", "Mexican"],
-      diets: ["No Filter", "Vegetarian", "Vegan", "Gluten Free", "Ketogenic"],
-      intolerances: ["No Filter", "Dairy", "Egg", "Gluten", "Peanut"],
+      showFilters: false,
+      cuisines: ["Italian", "Chinese", "American", "Mexican"],
+      diets: ["Vegetarian", "Vegan", "Gluten Free", "Ketogenic"],
+      intolerances: ["Dairy", "Egg", "Gluten", "Peanut"],
       resultsLimits: [5, 10, 15],
       sortOptions: ["None", "Preparation Time", "Popularity"]
     };
@@ -101,10 +111,13 @@ export default {
       this.searchPerformed = false;
     },
     clearFilters() {
-      this.selectedCuisine = "No Filter";
-      this.selectedDiet = "No Filter";
-      this.selectedIntolerance = "No Filter";
+      this.selectedCuisine = [];
+      this.selectedDiet = [];
+      this.selectedIntolerance = [];
       this.resultsLimit = 5;
+    },
+    toggleFilters() {
+      this.showFilters = !this.showFilters;
     }
   },
   mounted() {
@@ -142,6 +155,7 @@ export default {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  margin-top: 50px;
 }
 
 .search-results {
@@ -168,5 +182,30 @@ export default {
   margin-top: 20px;
   font-size: 1.2em;
   color: #666;
+}
+
+.filters-container {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.filters-container label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.filters-container .b-form-checkbox-group {
+  margin-left: 20px;
 }
 </style>
