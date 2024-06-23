@@ -25,10 +25,11 @@ export function mockGetRecipeFullDetails(recipeId) {
     return { data: { recipes: recipes } };
   }
 
-  export function mockGetUserFavoriteRecipes(userId){
+  export function mockGetUserFavoriteRecipes(amount){
     let recipes = [];
-    for (let index = 0; index < 2; index++) {
+    for (let index = 0; index < amount; index++) {
       recipes.push(recipe_preview);
       
     }
+    return { data: { recipes: recipes } };
   }

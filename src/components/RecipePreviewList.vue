@@ -1,11 +1,11 @@
 <template>
-  <b-container>
+  <b-container class="container">
     <h3>
       {{ title }}
       <slot></slot>
     </h3>
-    <b-row>
-      <b-col v-for="r in recipes" :key="r.id">
+    <b-row class="rowRecipe">
+      <b-col class="colRecipe" v-for="r in recipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" />
       </b-col>
     </b-row>
@@ -60,7 +60,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  min-height: 400px;
-}
+
 </style>

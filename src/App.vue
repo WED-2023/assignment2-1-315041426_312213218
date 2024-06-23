@@ -17,7 +17,7 @@
           <span v-else class="nav-item nav-link2 user-menu">
             <b-button  variant="outline-success" @click="showModal" class="nav-link2">Add Recipe</b-button>
             <b-nav-item-dropdown :text="$root.store.username" id="dropdown-menu">
-              <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_favorite_recipes' }" >My favorite recipes</router-link></b-dropdown-item>
+              <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'favorites' }" >My favorite recipes</router-link></b-dropdown-item>
               <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_recipes' }">My recipes</router-link></b-dropdown-item>
               <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_family_recipes' }">My family recipes</router-link></b-dropdown-item>
             </b-nav-item-dropdown>

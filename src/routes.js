@@ -26,13 +26,16 @@ const routes = [
     path: "/about",
     name: "about",
     component: () => import("./pages/AboutPage.vue"),
-  }
-  ,
+  },
   {
     path: "/recipe/:recipeId",
     name: "recipe",
     component: () => import("./pages/RecipeViewPage.vue"),
-    props: true
+  },
+  {
+    path: "/favorites",
+    name: "favorites",
+    component: () => import("./pages/FavoritesPage.vue"),
   },
   {
     path: "*",

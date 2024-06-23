@@ -57,7 +57,7 @@
       display: block;
       justify-content: center;
       align-items: center;
-      margin-top: 2%;
+      margin-top: 5%;
       width: 56%;
       margin-left: 22%;
   }
