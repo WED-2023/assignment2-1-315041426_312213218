@@ -7,14 +7,11 @@
           <div class="container-search">
             <b-form-input v-model="searchQuery" placeholder="Enter recipe to search" class="ml-0 mr-3"></b-form-input>
                 <label class="mb-0 mr-2">Results:</label>
-                <b-form-input
-                  v-model="resultsLimit"
-                  type="number"
-                  min="1"
-                  max="50"
-                  placeholder="Results"
-                  class="results-input"
-                ></b-form-input>
+                <b-form-select
+              v-model="resultsLimit"
+              :options="resultsLimits"
+              class="results-select"
+            ></b-form-select>
               
                 <b-icon icon="filter-circle" @click="toggleFilters" class="filter-icon mx-2"></b-icon>
                 <div class="buttons-container">
@@ -263,6 +260,13 @@ export default {
   display: flex;
   justify-content: start;
   align-items: center;
+}
+.results-input {
+  width: 80px;
+}
+
+.results-select {
+  width: 15%;
 }
 </style>
 
