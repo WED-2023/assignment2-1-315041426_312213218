@@ -3,13 +3,13 @@
     <div id="nav">
       <b-navbar type="dark" variant="dark" fixed="top">
         <b-navbar-nav>
-          <b-nav-item ><router-link :to="{ name: 'main' }" class="nav-link1">Main</router-link></b-nav-item>
+          <b-nav-item><router-link :to="{ name: 'main' }" class="nav-link1">Main</router-link></b-nav-item>
           <b-nav-item><router-link :to="{ name: 'search' }" class="nav-link1">Search</router-link></b-nav-item>
           <b-nav-item><router-link :to="{ name: 'about' }" class="nav-link1">About</router-link></b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <span v-if="!$root.store.username" class="nav-item nav-link2">
-            <span id="hello-text">Hello Guest,</span>     
+            <span id="hello-text">Hello Guest,</span>
             <router-link :to="{ name: 'login' }" class="nav-link1"> Login</router-link>
             <span> | </span>
             <router-link :to="{ name: 'register' }" class="nav-link1"> Register </router-link>
@@ -17,17 +17,17 @@
           <span v-else class="nav-item nav-link2 user-menu">
             <b-button variant="outline-success" @click="$bvModal.show('modal-prevent-closing')" class="nav-link2">Add Recipe</b-button>
             <b-nav-item-dropdown :text="$root.store.username" id="dropdown-menu">
-              <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'favorites' }" >My favorite recipes</router-link></b-dropdown-item>
+              <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'favorites' }">My favorite recipes</router-link></b-dropdown-item>
               <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_recipes' }">My recipes</router-link></b-dropdown-item>
               <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_family_recipes' }">My family recipes</router-link></b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-button class="button-4 nav-link2" variant="outline-danger" @click="Logout" >Logout</b-button>
+            <b-button class="button-4 nav-link2" variant="outline-danger" @click="Logout">Logout</b-button>
           </span>
         </b-navbar-nav>
       </b-navbar>
       <router-view />
     </div>
-    
+
     <b-modal
       id="modal-prevent-closing"
       ref="modal"
@@ -37,35 +37,27 @@
       @ok="handleOk"
     >
       <form ref="form" @submit.stop.prevent="handleSubmit">
-        <b-form-group label="Recipe Name" label-for="name-input">
-          <b-form-input
-            id="name-input"
-            v-model="recipe.name"
-            :state="nameState"
-            required
-          ></b-form-input>
+        <b-form-group label="Recipe Name" label-for="name-input" :state="nameState">
+          <b-form-input id="name-input" v-model="recipe.name" required></b-form-input>
+          <b-form-invalid-feedback>Name is required</b-form-invalid-feedback>
         </b-form-group>
-        
+
         <b-form-group label="Ingredients" label-for="ingredients-input">
           <div v-for="(ingredient, index) in recipe.ingredients" :key="index" class="mb-2">
-            <b-form-input
-              v-model="recipe.ingredients[index]"
-              placeholder="Enter ingredient"
-            ></b-form-input>
+            <b-form-input v-model="recipe.ingredients[index]" placeholder="Enter ingredient" :class="{ 'is-invalid': ingredientsInvalid }"></b-form-input>
           </div>
           <b-button size="sm" @click="addIngredient">Add Ingredient</b-button>
+          <b-form-invalid-feedback v-if="ingredientsInvalid">At least one ingredient is required</b-form-invalid-feedback>
         </b-form-group>
-        
+
         <b-form-group label="Instructions" label-for="instructions-input">
           <div v-for="(instruction, index) in recipe.instructions" :key="index" class="mb-2">
-            <b-form-input
-              v-model="recipe.instructions[index]"
-              placeholder="Enter instruction"
-            ></b-form-input>
+            <b-form-input v-model="recipe.instructions[index]" placeholder="Enter instruction" :class="{ 'is-invalid': instructionsInvalid }"></b-form-input>
           </div>
           <b-button size="sm" @click="addInstruction">Add Instruction</b-button>
+          <b-form-invalid-feedback v-if="instructionsInvalid">At least one instruction is required</b-form-invalid-feedback>
         </b-form-group>
-        
+
         <b-form-group>
           <b-form-checkbox v-model="recipe.glutenFree">Gluten Free</b-form-checkbox>
           <b-form-checkbox v-model="recipe.vegan">Vegan</b-form-checkbox>
@@ -74,6 +66,9 @@
     </b-modal>
   </div>
 </template>
+
+
+
 
 <script>
 export default {
@@ -88,6 +83,8 @@ export default {
         vegan: false,
       },
       nameState: null,
+      ingredientsInvalid: false,
+      instructionsInvalid: false,
     };
   },
   methods: {
@@ -104,7 +101,9 @@ export default {
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
       this.nameState = valid;
-      return valid;
+      this.ingredientsInvalid = this.recipe.ingredients.every(ingredient => ingredient.trim() === '');
+      this.instructionsInvalid = this.recipe.instructions.every(instruction => instruction.trim() === '');
+      return valid && !this.ingredientsInvalid && !this.instructionsInvalid;
     },
     resetModal() {
       this.recipe = {
@@ -115,6 +114,8 @@ export default {
         vegan: false,
       };
       this.nameState = null;
+      this.ingredientsInvalid = false;
+      this.instructionsInvalid = false;
     },
     handleOk(bvModalEvent) {
       // Prevent modal from closing
@@ -143,6 +144,9 @@ export default {
   }
 };
 </script>
+
+
+
 
 <style lang="scss">
 @import "@/scss/form-style.scss";
