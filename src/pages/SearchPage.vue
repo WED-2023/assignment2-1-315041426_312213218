@@ -43,6 +43,7 @@
       <b-form-group>
         <b-form-select v-model="sortOption" :options="sortOptions" class="ml-2"></b-form-select>
       </b-form-group>
+      <SearchedRecipes/>
     </div>
     </div>
   </div>
@@ -53,8 +54,13 @@
 
 
 <script>
+import SearchedRecipes from '../components/SearchedRecipes.vue';
+
 export default {
   name: "RecipeSearch",
+  components: {
+    SearchedRecipes
+  },
   data() {
     return {
       searchQuery: "",
