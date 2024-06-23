@@ -9,7 +9,7 @@
           v-for="r in recipes"
           :key="r.id"
           cols="12"
-          xl="4"
+          xl="6"
           lg="6"
           md="6"
           sm="12"

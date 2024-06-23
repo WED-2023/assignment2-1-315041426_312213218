@@ -37,23 +37,13 @@
       </transition>
     </b-form>
 
-    <div v-if="searchResults.length" class="search-results">
+    <div class="search-results">
       <div class="sort-container">
       <h2 class="mr-2">Search Results</h2>
       <b-form-group>
         <b-form-select v-model="sortOption" :options="sortOptions" class="ml-2"></b-form-select>
       </b-form-group>
     </div>
-      <div v-for="recipe in sortedResults" :key="recipe.id" class="recipe-preview">
-        <router-link :to="{ name: 'recipe-display', params: { id: recipe.id } }">
-          <img :src="recipe.image" :alt="recipe.title" />
-          <h3>{{ recipe.title }}</h3>
-        </router-link>
-        <p>{{ recipe.instructions }}</p>
-      </div>
-    </div>
-    <div v-else-if="searchPerformed" class="no-results">
-      <p>No relevant results found.</p>
     </div>
   </div>
 </template>
