@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="container">
-      <h1 class="text-center">Favorite Recipes</h1>
+    <div class="container-fluid-custom">
+      <h1 class="title text-center">Favorite Recipes</h1>
       <br>
-      <FavoriteRecipes class="text-center" title="Favorite Recipes" />
+      <FavoriteRecipes class="text-center" title="" />
     </div>
   </div>
 </template>
@@ -19,7 +19,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.container-fluid-custom {
+  padding-left: 2%;
+  padding-right: 2%;
   margin-top: 7%;
 }
 .title {

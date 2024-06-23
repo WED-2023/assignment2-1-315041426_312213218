@@ -1,14 +1,18 @@
 <template>
-    <b-container class="container">
-
+    <b-container fluid class="container-fluid-custom">
+      <h3>
+        {{ title }}
+        <slot></slot>
+      </h3>
       <b-row>
         <b-col
           v-for="r in recipes"
           :key="r.id"
           cols="12"
-          md="6"
+          xl="4"
           lg="6"
-          xl="6"
+          md="6"
+          sm="12"
         >
           <RecipePreview :recipe="r" />
         </b-col>
@@ -55,7 +59,9 @@
   </script>
   
   <style scoped>
-  .container {
+  .container-fluid-custom {
+    padding-left: 2%;
+    padding-right: 2%;
     margin-top: 7%;
   }
   </style>
