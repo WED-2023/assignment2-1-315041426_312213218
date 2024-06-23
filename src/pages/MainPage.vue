@@ -4,13 +4,13 @@
       <h1 class="title text-center">Main Page</h1>
       <br>
       <b-row>
-        <b-col>
+        <b-col cols="6">
           <RandomRecipes class="text-center" title="Random Recipes" style="text-shadow: #fff8f8 1px 0 30px"/>
         </b-col>
         <b-col v-if="!$root.store.username" class="login-container">
-          <LoginPage></LoginPage>
+          <LoginPage/>
         </b-col>
-        <b-col v-else>
+        <b-col cols="6" v-else>
           <WatchedRecipes class="text-center" title="Last Viewed Recipes" style="text-shadow: #fff8f8 1px 0 30px"></WatchedRecipes>
         </b-col>
       </b-row>
