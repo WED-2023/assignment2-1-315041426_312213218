@@ -15,12 +15,20 @@
             <router-link :to="{ name: 'register' }" class="nav-link1"> Register </router-link>
           </span>
           <span v-else class="nav-item nav-link2 user-menu">
-            <b-button variant="outline-success" @click="$bvModal.show('modal-prevent-closing')" class="nav-link2">Add Recipe</b-button>
+            <b-button variant="outline-success" @click="$bvModal.show('modal-prevent-closing')" class="nav-link2 wide-button">Add Recipe</b-button>
             <b-nav-item-dropdown :text="$root.store.username" id="dropdown-menu">
-              <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'favorites' }">My favorite recipes</router-link></b-dropdown-item>
-              <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_recipes' }">My recipes</router-link></b-dropdown-item>
-              <b-dropdown-item href="#"><router-link class="dropdown-item" :to="{ name: 'my_family_recipes' }">My family recipes</router-link></b-dropdown-item>
+              <b-dropdown-item>
+                <router-link class="dropdown-item text-left" :to="{ name: 'favorites' }">My favorite recipes   </router-link>
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link class="dropdown-item text-left" :to="{ name: 'my_recipes' }">My recipes   </router-link>
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link class="dropdown-item text-left" :to="{ name: 'my_family_recipes' }">My family recipes   </router-link>
+              </b-dropdown-item>
             </b-nav-item-dropdown>
+
+
             <b-button class="button-4 nav-link2" variant="outline-danger" @click="Logout">Logout</b-button>
           </span>
         </b-navbar-nav>
@@ -207,13 +215,20 @@ export default {
 .b-nav-item-dropdown .dropdown-menu {
   background-color: #343a40 !important; /* Match this color with your navbar's background color */
   border-color: #343a40 !important; /* Optional: match the border color as well */
-  color: black;
+  color: white;
+  text-align: left; /* Ensure text aligns to the left */
+  width: auto; /* Adjust width to fit content */
+  margin: 0; /* Remove any default margins */
+  padding: 0.5rem 1rem; /* Adjust padding as needed */
 }
 
 /* Custom dropdown item styles */
 .dropdown-item {
   background-color: #343a40 !important; /* Set the dropdown item background color to black */
   color: white !important; /* Ensure the text is visible on the black background */
+  text-align: left; /* Ensure text aligns to the left */
+  white-space: nowrap; /* Prevent text from wrapping */
+  padding-left: 1rem; /* Add left padding for better alignment */
 }
 
 .dropdown-item:hover,
@@ -223,5 +238,18 @@ export default {
 
 .b-nav-item-dropdown .dropdown-menu .dropdown-divider {
   border-top-color: #6c757d !important; /* Optional: set the color of the divider */
+}
+
+
+/* Adjust dropdown item text alignment */
+.dropdown-item.text-left {
+  text-align: left;
+  padding-left: 0%;
+}
+#dropdown-menu{
+  margin-right: 0;
+}
+.wide-button {
+  white-space: nowrap; /* Prevent text wrapping */
 }
 </style>

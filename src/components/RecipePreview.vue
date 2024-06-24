@@ -12,7 +12,7 @@
       </div>
       <ul class="recipe-overview">
         <li>{{ recipe.readyInMinutes }} minutes</li>
-        <li>{{ recipe.aggregateLikes }} likes</li>
+        <li>{{ recipe.aggregateLikes }}<br>likes</li>
         <li><b-button :class="{'favorite-button': true, 'favorite-active': isFavorite}" variant="outline-warning" @click="toggleFavorite">
               {{ isFavorite ? "Remove from Favorites" : "Add to Favorites" }}
             </b-button>
@@ -79,7 +79,7 @@ export default {
   display: block;
   width:80%;
   position: relative;
-  margin-top:10%;
+  margin-top:2%;
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth animation */
   cursor: default; /* Default cursor for the whole preview */
   background-color: whitesmoke;
@@ -91,7 +91,7 @@ export default {
 }
 .recipe-preview > .recipe-body {
   width: 100%;
-  height: 200px;
+  height: 8%;
   position: relative;
 }
 .recipe-preview .recipe-body .recipe-image {

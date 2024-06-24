@@ -6,48 +6,44 @@
         <b-form-group>
           <div class="container-search">
             <b-form-input v-model="searchQuery" placeholder="Enter recipe to search" class="ml-0 mr-3"></b-form-input>
-                <label class="mb-0 mr-2">Results:</label>
-                <b-form-select
-              v-model="resultsLimit"
-              :options="resultsLimits"
-              class="results-select"
-            ></b-form-select>
-              
-                <b-icon icon="filter-circle" @click="toggleFilters" class="filter-icon mx-2"></b-icon>
-                <div class="buttons-container">
-                  <b-button type="submit" variant="primary" class="ml-2">Search</b-button>
-                  <b-button type="button" variant="secondary" @click="clearResults" class="ml-2">Clear Results</b-button>
-                  <b-button type="button" variant="danger" @click="clearFilters" class="ml-2">Clear Filters</b-button>
-                </div>
+            <label class="mb-0 mr-2">Results:</label>
+            <b-form-select v-model="resultsLimit" :options="resultsLimits" class="results-select"></b-form-select>
+            <b-icon :icon="filterIcon" @click="toggleFilters" class="filter-icon mx-2"></b-icon>
+            <div class="buttons-container">
+              <b-button type="submit" variant="outline-primary" class="ml-2" @click="handleSearchClick">Search</b-button>
+              <b-button type="button" variant="outline-secondary" @click="clearResults" class="ml-2 wide-button">Clear Results</b-button>
+              <b-button type="button" variant="outline-danger" @click="clearFilters" class="ml-2 wide-button">Clear Filters</b-button>
+            </div>
           </div>
         </b-form-group>
       </div>
       <transition name="fade">
         <div v-if="showFilters" class="filters-container">
           <b-form-group label="Filter by cuisine:">
-            <b-form-checkbox-group v-model="selectedCuisine" :options="cuisineOptions" stacked></b-form-checkbox-group>
+            <b-form-checkbox-group v-model="selectedCuisine" :options="cuisines"></b-form-checkbox-group>
           </b-form-group>
           <b-form-group label="Filter by diet:">
-            <b-form-checkbox-group v-model="selectedDiet" :options="dietOptions" stacked></b-form-checkbox-group>
+            <b-form-checkbox-group v-model="selectedDiet" :options="diets"></b-form-checkbox-group>
           </b-form-group>
           <b-form-group label="Filter by intolerance:">
-            <b-form-checkbox-group v-model="selectedIntolerance" :options="intoleranceOptions" stacked></b-form-checkbox-group>
+            <b-form-checkbox-group v-model="selectedIntolerance" :options="intolerances"></b-form-checkbox-group>
           </b-form-group>
         </div>
       </transition>
     </b-form>
 
-    <div class="search-results">
-      <div class="sort-container">
-      <h2 class="mr-2">Search Results</h2>
-      <b-form-group>
-        <b-form-select v-model="sortOption" :options="sortOptions" class="ml-2"></b-form-select>
-      </b-form-group>
-      <SearchedRecipes/>
-    </div>
+    <div v-if="searchPerformed && displayResults" class="search-results">
+        <div class="sort-container">
+          <h2 class="mr-2">Search Results:</h2>
+            <b-form-group>
+              <b-form-select v-model="sortOption" :options="sortOptions" class="ml-2 sort-select"></b-form-select>
+            </b-form-group>
+        </div>
+        <SearchedRecipes :results="sortedResults" />
     </div>
   </div>
 </template>
+
 
 
 
@@ -76,7 +72,9 @@ export default {
       diets: ["Vegetarian", "Vegan", "Gluten Free", "Ketogenic"],
       intolerances: ["Dairy", "Egg", "Gluten", "Peanut"],
       resultsLimits: [5, 10, 15],
-      sortOptions: ["None", "Preparation Time", "Popularity"]
+      sortOptions: ["None", "Preparation Time", "Popularity"],
+      isSearchButtonClicked: false,
+      displayResults: false  
     };
   },
   computed: {
@@ -87,36 +85,31 @@ export default {
         return [...this.searchResults].sort((a, b) => b.popularity - a.popularity);
       }
       return this.searchResults;
+    },
+    filterIcon() {
+      return this.selectedCuisine.length > 0 || this.selectedDiet.length > 0 || this.selectedIntolerance.length > 0 ? 'filter-circle-fill' : 'filter-circle';
     }
   },
   methods: {
+    handleSearchClick() {
+      if (!this.searchQuery) {
+        return;
+      }
+      this.searchPerformed = true;
+      this.displayResults = true;
+      this.searchRecipes();
+    },
     searchRecipes() {
       // Simulate fetching search results from a server
       // Replace this with actual API call
       this.searchPerformed = true;
-      this.searchResults = [
-        {
-          id: 1,
-          title: "Sample Recipe 1",
-          image: "path/to/image1.jpg",
-          instructions: "Sample preparation instructions.",
-          preparationTime: 30,
-          popularity: 5
-        },
-        {
-          id: 2,
-          title: "Sample Recipe 2",
-          image: "path/to/image2.jpg",
-          instructions: "Sample preparation instructions.",
-          preparationTime: 20,
-          popularity: 8
-        }
-      ];
+      this.searchResults = [1]; // this is just a placeholder for now.
     },
     clearResults() {
       this.searchResults = [];
       this.searchQuery = "";
       this.searchPerformed = false;
+      this.displayResults = false;
     },
     clearFilters() {
       this.selectedCuisine = [];
@@ -161,7 +154,7 @@ export default {
 
 <style scoped>
 .recipe-search-container {
-  min-width: 800px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 0px;
   margin-top: 10px;
@@ -200,13 +193,17 @@ export default {
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.5s;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
@@ -240,23 +237,26 @@ export default {
 .form-container .d-flex > .ml-2 {
   margin-top: 10px;
 }
+
 .buttons-container {
   display: flex;
   margin-top: 10px;
   max-height: 50px;
   max-width: 100%;
 }
+
 .sort-container {
   display: flex;
-  justify-content:start;
+  margin-top: 2%;
   align-items: center;
-  margin-top: 20px;
 }
+
 .container-search {
   display: flex;
   justify-content: start;
   align-items: center;
 }
+
 .results-input {
   width: 80px;
 }
@@ -264,7 +264,17 @@ export default {
 .results-select {
   width: 15%;
 }
+
+.filter-icon {
+  cursor: pointer;
+  transition: all 2s ease;
+}
+.wide-button {
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
 </style>
+
 
 
 
