@@ -77,14 +77,14 @@ export default {
 <style scoped>
 .recipe-preview {
   display: block;
-  width:80%;
   position: relative;
   margin-top:2%;
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth animation */
   cursor: default; /* Default cursor for the whole preview */
   background-color: whitesmoke;
   padding: 5px;
-  margin-left:10%;
+  margin-left:25%;
+  max-width:400px;
 }
 .recipe-preview:hover {
   transform: translateY(-5px); /* Move up slightly on hover */
