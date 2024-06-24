@@ -11,7 +11,7 @@
           <LoginPage/>
         </b-col>
         <b-col v-else cols="6">
-          <WatchedRecipes class="text-center" title="Last Viewed Recipes" style="text-shadow: #fff8f8 1px 0 30px"></WatchedRecipes>
+          <WatchedRecipes class="text-center" title="Last Viewed Recipes" style="text-shadow: #fff8f8 1px 0 30px"/>
         </b-col>
       </b-row>
     </div>

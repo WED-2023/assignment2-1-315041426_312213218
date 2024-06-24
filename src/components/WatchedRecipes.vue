@@ -4,7 +4,6 @@
       {{ title }}
     </h3>
     <RecipePreviewList :recipes="recipes"></RecipePreviewList>
-    <b-button class="more" variant="success" @click="updateRecipes">More</b-button>
   </b-container>
 </template>
   
