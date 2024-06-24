@@ -10,8 +10,8 @@
         <b-col v-if="!$root.store.username" class="login-container">
           <LoginPage/>
         </b-col>
-        <b-col cols="6" v-else>
-          <WatchedRecipes class="text-center" title="Last Viewed Recipes" style="text-shadow: #fff8f8 1px 0 30px"></WatchedRecipes>
+        <b-col v-else cols="6">
+          <WatchedRecipes class="text-center" title="Last Viewed Recipes" style="text-shadow: #fff8f8 1px 0 30px"/>
         </b-col>
       </b-row>
     </div>
