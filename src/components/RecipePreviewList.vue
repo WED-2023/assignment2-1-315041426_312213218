@@ -63,9 +63,4 @@ export default {
 .rowRecipe{
   margin-left:1%;
 }
-.colRecipe{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 </style>
