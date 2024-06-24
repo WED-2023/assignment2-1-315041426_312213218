@@ -60,5 +60,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.rowRecipe{
+  margin-left:1%;
+}
 </style>
