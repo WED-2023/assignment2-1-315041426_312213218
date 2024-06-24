@@ -84,6 +84,7 @@ export default {
   cursor: default; /* Default cursor for the whole preview */
   background-color: whitesmoke;
   padding: 5px;
+  margin-left:10%;
 }
 .recipe-preview:hover {
   transform: translateY(-5px); /* Move up slightly on hover */
