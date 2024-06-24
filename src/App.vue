@@ -3,9 +3,15 @@
     <div id="nav">
       <b-navbar type="dark" variant="dark" fixed="top">
         <b-navbar-nav>
-          <b-nav-item><router-link :to="{ name: 'main' }" class="nav-link1">Main</router-link></b-nav-item>
-          <b-nav-item><router-link :to="{ name: 'search' }" class="nav-link1">Search</router-link></b-nav-item>
-          <b-nav-item><router-link :to="{ name: 'about' }" class="nav-link1">About</router-link></b-nav-item>
+          <b-nav-item>
+            <b-button variant="outline-primary" @click="navigateTo('main')" class="nav-link1">Main</b-button>
+          </b-nav-item>
+          <b-nav-item>
+            <b-button variant="outline-light" @click="navigateTo('search')" class="nav-link1">Search</b-button>
+          </b-nav-item>
+          <b-nav-item>
+            <b-button variant="outline-light" @click="navigateTo('about')" class="nav-link1">About</b-button>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <span v-if="!$root.store.username" class="nav-item nav-link2">
@@ -17,14 +23,14 @@
           <span v-else class="nav-item nav-link2 user-menu">
             <b-button variant="outline-success" @click="$bvModal.show('modal-prevent-closing')" class="nav-link2 wide-button">Add Recipe</b-button>
             <b-nav-item-dropdown :text="$root.store.username" id="dropdown-menu">
-              <b-dropdown-item>
-                <router-link class="dropdown-item text-left" :to="{ name: 'favorites' }">My favorite recipes   </router-link>
+              <b-dropdown-item class="dropdown-item text-left">
+                <router-link class="dropdown-router-link" :to="{ name: 'favorites' }">My favorite recipes</router-link>
               </b-dropdown-item>
-              <b-dropdown-item>
-                <router-link class="dropdown-item text-left" :to="{ name: 'my_recipes' }">My recipes   </router-link>
+              <b-dropdown-item class="dropdown-item text-left">
+                <router-link class="dropdown-router-link" :to="{ name: 'my_recipes' }">My recipes</router-link>
               </b-dropdown-item>
-              <b-dropdown-item>
-                <router-link class="dropdown-item text-left" :to="{ name: 'my_family_recipes' }">My family recipes   </router-link>
+              <b-dropdown-item class="dropdown-item text-left">
+                <router-link class="dropdown-router-link" :to="{ name: 'my_family_recipes' }">My family recipes</router-link>
               </b-dropdown-item>
             </b-nav-item-dropdown>
 
@@ -148,7 +154,13 @@ export default {
     },
     addInstruction() {
       this.recipe.instructions.push('');
-    }
+    },
+    navigateTo(routeName) {
+  if (this.$route.name !== routeName) {
+    this.$router.push({ name: routeName });
+  }
+}
+
   }
 };
 </script>
@@ -228,7 +240,6 @@ export default {
   color: white !important; /* Ensure the text is visible on the black background */
   text-align: left; /* Ensure text aligns to the left */
   white-space: nowrap; /* Prevent text from wrapping */
-  padding-left: 1rem; /* Add left padding for better alignment */
 }
 
 .dropdown-item:hover,
@@ -244,7 +255,7 @@ export default {
 /* Adjust dropdown item text alignment */
 .dropdown-item.text-left {
   text-align: left;
-  padding-left: 0%;
+  padding:0;
 }
 #dropdown-menu{
   margin-right: 0;
@@ -252,4 +263,9 @@ export default {
 .wide-button {
   white-space: nowrap; /* Prevent text wrapping */
 }
+.dropdown-router-link{
+color: white !important; /* Ensure the text is white */
+  text-decoration: none;   /* Remove underline */
+}
+
 </style>
