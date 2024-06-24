@@ -83,6 +83,7 @@ export default {
   cursor: default; /* Default cursor for the whole preview */
   background-color: whitesmoke;
   padding: 5px;
+  margin-left:25%;
   max-width:400px;
 }
 .recipe-preview:hover {
