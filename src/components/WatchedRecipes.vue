@@ -2,13 +2,9 @@
   <b-container>
     <h3>
       {{ title }}
-      <slot></slot>
     </h3>
-    <b-row>
-      <b-col v-for="r in recipes" :key="r.id">
-        <RecipePreview class="recipePreview" :recipe="r" />
-      </b-col>
-    </b-row>
+    <RecipePreviewList :recipes="recipes"></RecipePreviewList>
+    <b-button class="more" variant="success" @click="updateRecipes">More</b-button>
   </b-container>
 </template>
   
