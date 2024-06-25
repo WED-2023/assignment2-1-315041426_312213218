@@ -1,4 +1,4 @@
-  <template>
+<template>
     <b-container fluid class="container-fluid-custom">
       <h3>
         {{ title }}
@@ -22,10 +22,10 @@
   
   <script>
   import RecipePreview from "./RecipePreview.vue";
-  import { mockGetUserMyRecipes } from "../services/recipes.js"; /////
+  import { mockGetUserMyRecipes } from "../services/recipes.js"; 
   
   export default {
-    name: "MyRecipes", /////
+    name: "MyRecipes", 
     components: {
       RecipePreview
     },
@@ -41,7 +41,7 @@
       };
     },
     mounted() {
-      this.getMyRecipes();////
+      this.getMyRecipes();
     },
     methods: {
       async getMyRecipes() {
@@ -62,7 +62,10 @@
   .container-fluid-custom {
     padding-left: 2%;
     padding-right: 2%;
-    margin-top: 7%;
+    margin-top: 2%;
+  }
+  .mb-3 {
+    margin-bottom: 1rem; /* Adjust bottom margin */
   }
   </style>
   

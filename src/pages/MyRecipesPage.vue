@@ -22,10 +22,11 @@
   .container-fluid-custom {
     padding-left: 2%;
     padding-right: 2%;
-    margin-top: 7%;
+    margin-top: 3%;
   }
   .title {
     text-shadow: #fff8f8 1px 0 30px;
+    margin-top:5%;
   }
   </style>
   
