@@ -1,16 +1,16 @@
 <template>
     <b-container fluid class="container-fluid-custom">
-      <h3 class="">
+      <h3>
         {{ title }}
         <slot></slot>
       </h3>
-      <b-row class="">
+      <b-row>
         <b-col
           v-for="r in recipes"
           :key="r.id"
           cols="12"
-          xl="4"
-          lg="4"
+          xl="6"
+          lg="6"
           md="6"
           sm="12"
         >
@@ -25,7 +25,7 @@
   import { mockGetUserFavoriteRecipes } from "../services/recipes.js";
   
   export default {
-    name: "FavoriteRecipes",
+    name: "SearchedRecipes",
     components: {
       RecipePreview
     },
@@ -62,11 +62,7 @@
   .container-fluid-custom {
     padding-left: 2%;
     padding-right: 2%;
-    margin-top: 2%; /* Remove top margin */
-  }
-  
-  .mb-3 {
-    margin-bottom: 1rem; /* Adjust bottom margin */
+    margin-top: 7%;
   }
   </style>
   
