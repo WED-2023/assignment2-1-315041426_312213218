@@ -156,7 +156,7 @@ export default {
       this.recipe.instructions.push('');
     },
     navigateTo(routeName) {
-  if (this.$route.name !== routeName) {
+  if(this.$route.name !== routeName) {
     this.$router.push({ name: routeName });
   }
 }

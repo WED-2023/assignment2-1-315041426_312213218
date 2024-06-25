@@ -1,0 +1,345 @@
+[
+    {
+      "title": "Tali's Cheese Cake",
+      "author": "Uncle Tali",
+      "occasion": "Birthdays in the family",
+      "image": "http://www.bazekalim.com/wp-content/uploads/2007/04/cheesecake.jpg",
+      "ingredients": [
+        {
+          "id": 1,
+          "name": "butter or margarine",
+          "amount": 100,
+          "unit": "g",
+          "category": "dough"
+        },
+        {
+          "id": 2,
+          "name": "sugar",
+          "amount": 0.5,
+          "unit": "cup",
+          "category": "dough"
+        },
+        {
+          "id": 3,
+          "name": "self-raising flour",
+          "amount": 1.5,
+          "unit": "cup",
+          "category": "dough"
+        },
+        {
+          "id": 4,
+          "name": "egg",
+          "amount": 1,
+          "unit": "piece",
+          "category": "dough"
+        },
+        {
+          "id": 5,
+          "name": "white cheese 5%",
+          "amount": 750,
+          "unit": "g",
+          "category": "cheese filling"
+        },
+        {
+          "id": 6,
+          "name": "sugar",
+          "amount": 0.5,
+          "unit": "cup",
+          "category": "cheese filling"
+        },
+        {
+          "id": 7,
+          "name": "eggs",
+          "amount": 2,
+          "unit": "piece",
+          "category": "cheese filling"
+        },
+        {
+          "id": 8,
+          "name": "flour",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "cheese filling"
+        },
+        {
+          "id": 9,
+          "name": "cornflour",
+          "amount": 1,
+          "unit": "tbsp",
+          "category": "cheese filling"
+        },
+        {
+          "id": 10,
+          "name": "vanilla extract",
+          "amount": 1,
+          "unit": "tsp",
+          "category": "cheese filling"
+        },
+        {
+          "id": 11,
+          "name": "sweet cream (optional)",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "cheese filling"
+        }
+      ],
+      "instructions": [
+        {
+          "number": 1,
+          "step": "Preheat the oven to 180 degrees. The cake should get a heat stroke when it goes into the hot oven.",
+          "category": "Preparations"
+        },
+        {
+          "number": 2,
+          "step": "Peel off half of the wrapper of the butter package and hold the wrapped half to spread the butter and grease the sides and base of the pan with it.",
+          "category": "Preparations"
+        },
+        {
+          "number": 3,
+          "step": "Put all the dough ingredients in a food processor (you can also do this by hand, in a bowl, and it's even quite fun), and mix until a crumbly mixture is formed. If you want to do this in a bowl, just knead the dough until it forms a crumbly mixture.",
+          "category": "Preparing the bottom of the dough"
+        },
+        {
+          "number": 4,
+          "step": "Transfer the crumbs to the mold and flatten it first to the sides (with your fingertips) to a height of 3-4 cm, then to the bottom (with your whole hand).",
+          "category": "Preparing the bottom of the dough"
+        },
+        {
+          "number": 5,
+          "step": "In the same mixing bowl, put the ingredients for the cheese filling, and mix to a relatively smooth and liquid mixture.",
+          "category": "Preparation of the cheese filling"
+        },
+        {
+          "number": 6,
+          "step": "Pour the filling into the mold with the dough.",
+          "category": "Baking the cake"
+        },
+        {
+          "number": 7,
+          "step": "Put in the oven on the middle floor.",
+          "category": "Baking the cake"
+        },
+        {
+          "number": 8,
+          "step": "Bake the cake for about 45 to 55 minutes in the oven.",
+          "category": "Baking the cake"
+        },
+        {
+          "number": 9,
+          "step": "After half an hour of baking, you will notice that the dough becomes brown at the edges, and small bubbles begin to appear on the white filling.",
+          "category": "Baking the cake"
+        },
+        {
+          "number": 10,
+          "step": "Now it is recommended to reduce the heat of the oven to about 150 degrees, and bake for another ten minutes - fifteen minutes. That way the dough won't burn and the stuffing will have a little more time to cook from the inside.",
+          "category": "Baking the cake"
+        },
+        {
+          "number": 11,
+          "step": "At the end of baking, turn off the oven and open the door little by little (not completely).",
+          "category": "Baking the cake"
+        },
+        {
+          "number": 12,
+          "step": "Let the cake cool gradually. After half an hour or so you can take it out of the oven and let it cool to room temperature on the counter.",
+          "category": "Baking the cake"
+        },
+        {
+          "number": 13,
+          "step": "Don't worry if the filling seems too soft or wobbly when you take the cake out, it hardens as the cake cools. Keep the cake covered in the refrigerator and serve cold. It is kept for about a week, and sometimes a little more.",
+          "category": "Baking the cake"
+        },
+        {
+          "number": 14,
+          "step": "Upgrades: I personally like the cake as it is. But if important guests come to you and you want to show ultra-investors, you can easily turn it into a real luxury cake. You can chop a package of strawberries (they cost a dime now!) into cubes and cook with half a cup of sugar in a saucepan until it becomes a thick paste, and load on the cold cake. You can mix a cup of sour cream with 2 tablespoons of sugar and spread it on the cake in the last 10 minutes of baking. You can pour a hot and decadent toffee sauce over it.",
+          "category": "Additional Comments"
+        }
+      ]
+    },
+    {
+      "title": "Vermicelli With Saffron Chicken",
+      "author": "Grandma Ilana",
+      "occasion": "weddings and other festive occasions.",
+      "image": "https://www.thespruceeats.com/thmb/A9_YOYtKaIsQ0-bejemM38wF_zw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-469666133-68e0c8019cdc422094d09582eb046667.jpg",
+      "ingredients": [
+        {
+          "id": 1,
+          "name": "vermicelli",
+          "amount": 1,
+          "unit": "kilogram",
+          "category": "Seffa"
+        },
+        {
+          "id": 2,
+          "name": "olive oil",
+          "amount": 3,
+          "unit": "tablespoons",
+          "category": "Seffa"
+        },
+        {
+          "id": 3,
+          "name": "salt",
+          "amount": 2,
+          "unit": "teaspoons",
+          "category": "Seffa"
+        },
+        {
+          "id": 4,
+          "name": "golden raisins, soaked in water",
+          "amount": 1,
+          "unit": "cup",
+          "category": "Seffa"
+        },
+        {
+          "id": 5,
+          "name": "unsalted butter",
+          "amount": 4,
+          "unit": "tablespoons",
+          "category": "Seffa"
+        },
+        {
+          "id": 6,
+          "name": "confectioners' sugar",
+          "amount": 1,
+          "unit": "cup",
+          "category": "Seffa"
+        },
+        {
+          "id": 7,
+          "name": "chicken, cut into pieces",
+          "amount": 1,
+          "unit": "kilogram",
+          "category": "Saffron Chicken/Meat"
+        },
+        {
+          "id": 8,
+          "name": "sweet onions, chopped medium",
+          "amount": 2,
+          "unit": "onion",
+          "category": "Saffron Chicken/Meat"
+        },
+        {
+          "id": 9,
+          "name": "ground ginger",
+          "amount": 1,
+          "unit": "tablespoon",
+          "category": "Saffron Chicken/Meat"
+        },
+        {
+          "id": 10,
+          "name": "white pepper",
+          "amount": 1,
+          "unit": "teaspoon",
+          "category": "Saffron Chicken/Meat"
+        },
+        {
+          "id": 11,
+          "name": "black pepper",
+          "amount": 0.5,
+          "unit": "teaspoon",
+          "category": "Saffron Chicken/Meat"
+        },
+        {
+          "id": 12,
+          "name": "cinnamon sticks",
+          "amount": 2,
+          "unit": "small",
+          "category": "Saffron Chicken/Meat"
+        },
+        {
+          "id": 13,
+          "name": "saffron threads, crumbled",
+          "amount": 1,
+          "unit": "teaspoon",
+          "category": "Saffron Chicken/Meat"
+        },
+        {
+          "id": 14,
+          "name": "turmeric",
+          "amount": 1,
+          "unit": "teaspoon",
+          "category": "Saffron Chicken/Meat"
+        },
+        {
+          "id": 15,
+          "name": "salt",
+          "amount": 2,
+          "unit": "teaspoons",
+          "category": "Saffron Chicken/Meat"
+        },
+        {
+          "id": 16,
+          "name": "unsalted butter",
+          "amount": 4,
+          "unit": "tablespoons",
+          "category": "Saffron Chicken/Meat"
+        },
+        {
+          "id": 17,
+          "name": "olive oil",
+          "amount": 0.25,
+          "unit": "cup",
+          "category": "Saffron Chicken/Meat"
+        },
+        {
+          "id": 18,
+          "name": "fresh cilantro, chopped",
+          "amount": 0.25,
+          "unit": "cup",
+          "category": "Saffron Chicken/Meat"
+        }
+      ],
+      "instructions": [
+        {
+          "number": 1,
+          "step": "Fill the base of a couscoussier with ample salted water, and bring to a boil over high heat.",
+          "category": "Steam the Couscous or Broken Vermicelli (Chaariya)"
+        },
+        {
+          "number": 2,
+          "step": "Reduce to a simmer, and proceed with steaming the couscous three times (add the raisins for the final steaming), or the broken vermicelli four to five times (add the raisins for the fourth steaming).",
+          "category": "Steam the Couscous or Broken Vermicelli (Chaariya)"
+        },
+        {
+          "number": 3,
+          "step": "Mix the chicken, lamb or beef with the onions, spices, butter, oil and cilantro in a Dutch oven or heavy-bottomed pot. Gently brown the chicken or meat over medium heat for about 10 minutes.",
+          "category": "Cook the Saffron Chicken, Lamb or Beef"
+        },
+        {
+          "number": 4,
+          "step": "If cooking chicken, don't add water as the chicken will braise in its own juices. If preparing lamb or beef, add enough water to just cover the meat.",
+          "category": "Cook the Saffron Chicken, Lamb or Beef"
+        },
+        {
+          "number": 5,
+          "step": "Cover the pot and cook over medium heat, stirring occasionally, until the meat is very tender. This will take about 1 hour for the chicken but may take longer for the lamb or beef. Avoid scorching the meat, and add a small amount of water to the lamb or beef during the cooking if necessary.",
+          "category": "Cook the Saffron Chicken, Lamb or Beef"
+        },
+        {
+          "number": 6,
+          "step": "When the chicken or meat has been cooked, reduce the liquids until a thick sauce has formed.",
+          "category": "Cook the Saffron Chicken, Lamb or Beef"
+        },
+        {
+          "number": 7,
+          "step": "Discard the cinnamon stick, and taste for seasoning. If desired, remove the chicken from the bones.",
+          "category": "Cook the Saffron Chicken, Lamb or Beef"
+        },
+        {
+          "number": 8,
+          "step": "Gently toss the steamed broken vermicelli or couscous with the butter and powdered sugar. Place about 1/3 of this mixture on a very large serving dish.",
+          "category": "To Serve Seffa Medfouna"
+        },
+        {
+          "number": 9,
+          "step": "Arrange the chicken or meat in the center, and cover with the sauce. Pile the rest of the couscous or vermicelli on top of the meat, using your hands to shape a dome.",
+          "category": "To Serve Seffa Medfouna"
+        },
+        {
+          "number": 10,
+          "step": "Decorate the mound of seffa in a vertical pattern with the cinnamon, ground almonds and powdered sugar. Serve immediately, with small bowls of powdered sugar, ground almonds, and cinnamon on the side.",
+          "category": "To Serve Seffa Medfouna"
+        }
+      ]
+    }
+  ]

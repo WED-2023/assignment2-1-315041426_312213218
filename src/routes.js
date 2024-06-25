@@ -38,10 +38,20 @@ const routes = [
     component: () => import("./pages/FavoritesPage.vue"),
   },
   {
+    path: "/my-recipes",
+    name: "my_recipes",
+    component: () => import("./pages/MyRecipesPage.vue"),
+  },
+  {
+    path: "/family-recipes",
+    name: "my_family_recipes",
+    component: () => import("./pages/MyFamilyRecipesPage.vue")
+  },
+  {
     path: "*",
     name: "notFound",
     component: NotFound,
-  },
+  }
 ];
 
 export default routes;
