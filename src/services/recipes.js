@@ -33,3 +33,12 @@ export function mockGetRecipeFullDetails(recipeId) {
     }
     return { data: { recipes: recipes } };
   }
+
+  export function mockGetUserMyRecipes(amount){
+    let recipes = [];
+    for (let index = 0; index < amount; index++) {
+      recipes.push(recipe_preview);
+      
+    }
+    return { data: { recipes: recipes } };
+  }

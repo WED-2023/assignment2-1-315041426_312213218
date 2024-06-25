@@ -43,6 +43,11 @@ const routes = [
     component: () => import("./pages/MyRecipesPage.vue"),
   },
   {
+    path: "/family-recipes",
+    name: "my_family_recipes",
+    component: () => import("./pages/MyFamilyRecipesPage.vue"),
+  },
+  {
     path: "*",
     name: "notFound",
     component: NotFound,

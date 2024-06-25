@@ -1,0 +1,566 @@
+[
+  {
+    "title": "Tali's Cheese Cake",
+    "author": "Uncle Tali",
+    "occasion": "Birthdays in the family",
+    "image": "http://www.bazekalim.com/wp-content/uploads/2007/04/cheesecake.jpg",
+    "ingredients": [
+      {
+        "id": 1,
+        "name": "butter or margarine",
+        "amount": 100,
+        "unit": "g",
+        "category": "dough"
+      },
+      {
+        "id": 2,
+        "name": "sugar",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "dough"
+      },
+      {
+        "id": 3,
+        "name": "self-raising flour",
+        "amount": 1.5,
+        "unit": "cup",
+        "category": "dough"
+      },
+      {
+        "id": 4,
+        "name": "egg",
+        "amount": 1,
+        "unit": "piece",
+        "category": "dough"
+      },
+      {
+        "id": 5,
+        "name": "white cheese 5%",
+        "amount": 750,
+        "unit": "g",
+        "category": "cheese filling"
+      },
+      {
+        "id": 6,
+        "name": "sugar",
+        "amount": 0.5,
+        "unit": "cup",
+        "category": "cheese filling"
+      },
+      {
+        "id": 7,
+        "name": "eggs",
+        "amount": 2,
+        "unit": "piece",
+        "category": "cheese filling"
+      },
+      {
+        "id": 8,
+        "name": "flour",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "cheese filling"
+      },
+      {
+        "id": 9,
+        "name": "cornflour",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "cheese filling"
+      },
+      {
+        "id": 10,
+        "name": "vanilla extract",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "cheese filling"
+      },
+      {
+        "id": 11,
+        "name": "sweet cream (optional)",
+        "amount": 2,
+        "unit": "tbsp",
+        "category": "cheese filling"
+      }
+    ],
+    "instructions": [
+      {
+        "number": 1,
+        "step": "Preheat the oven to 180 degrees. The cake should get a heat stroke when it goes into the hot oven.",
+        "category": "Preparations"
+      },
+      {
+        "number": 2,
+        "step": "Peel off half of the wrapper of the butter package and hold the wrapped half to spread the butter and grease the sides and base of the pan with it.",
+        "category": "Preparations"
+      },
+      {
+        "number": 3,
+        "step": "Put all the dough ingredients in a food processor (you can also do this by hand, in a bowl, and it's even quite fun), and mix until a crumbly mixture is formed. If you want to do this in a bowl, just knead the dough until it forms a crumbly mixture.",
+        "category": "Preparing the bottom of the dough"
+      },
+      {
+        "number": 4,
+        "step": "Transfer the crumbs to the mold and flatten it first to the sides (with your fingertips) to a height of 3-4 cm, then to the bottom (with your whole hand).",
+        "category": "Preparing the bottom of the dough"
+      },
+      {
+        "number": 5,
+        "step": "In the same mixing bowl, put the ingredients for the cheese filling, and mix to a relatively smooth and liquid mixture.",
+        "category": "Preparation of the cheese filling"
+      },
+      {
+        "number": 6,
+        "step": "Pour the filling into the mold with the dough.",
+        "category": "Baking the cake"
+      },
+      {
+        "number": 7,
+        "step": "Put in the oven on the middle floor.",
+        "category": "Baking the cake"
+      },
+      {
+        "number": 8,
+        "step": "Bake the cake for about 45 to 55 minutes in the oven.",
+        "category": "Baking the cake"
+      },
+      {
+        "number": 9,
+        "step": "After half an hour of baking, you will notice that the dough becomes brown at the edges, and small bubbles begin to appear on the white filling.",
+        "category": "Baking the cake"
+      },
+      {
+        "number": 10,
+        "step": "Now it is recommended to reduce the heat of the oven to about 150 degrees, and bake for another ten minutes - fifteen minutes. That way the dough won't burn and the stuffing will have a little more time to cook from the inside.",
+        "category": "Baking the cake"
+      },
+      {
+        "number": 11,
+        "step": "At the end of baking, turn off the oven and open the door little by little (not completely).",
+        "category": "Baking the cake"
+      },
+      {
+        "number": 12,
+        "step": "Let the cake cool gradually. After half an hour or so you can take it out of the oven and let it cool to room temperature on the counter.",
+        "category": "Baking the cake"
+      },
+      {
+        "number": 13,
+        "step": "Don't worry if the filling seems too soft or wobbly when you take the cake out, it hardens as the cake cools. Keep the cake covered in the refrigerator and serve cold. It is kept for about a week, and sometimes a little more.",
+        "category": "Baking the cake"
+      },
+      {
+        "number": 14,
+        "step": "Upgrades: I personally like the cake as it is. But if important guests come to you and you want to show ultra-investors, you can easily turn it into a real luxury cake. You can chop a package of strawberries (they cost a dime now!) into cubes and cook with half a cup of sugar in a saucepan until it becomes a thick paste, and load on the cold cake. You can mix a cup of sour cream with 2 tablespoons of sugar and spread it on the cake in the last 10 minutes of baking. You can pour a hot and decadent toffee sauce over it.",
+        "category": "Additional Comments"
+      }
+    ]
+  },
+  {
+    "title": "Vermicelli With Saffron Chicken",
+    "author": "Grandma Ilana",
+    "occasion": "weddings and other festive occasions",
+    "image": "https://www.thespruceeats.com/thmb/A9_YOYtKaIsQ0-bejemM38wF_zw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-469666133-68e0c8019cdc422094d09582eb046667.jpg",
+    "ingredients": [
+      {
+        "id": 1,
+        "name": "vermicelli",
+        "amount": 1,
+        "unit": "kilogram",
+        "category": "Seffa"
+      },
+      {
+        "id": 2,
+        "name": "olive oil",
+        "amount": 3,
+        "unit": "tablespoons",
+        "category": "Seffa"
+      },
+      {
+        "id": 3,
+        "name": "salt",
+        "amount": 2,
+        "unit": "teaspoons",
+        "category": "Seffa"
+      },
+      {
+        "id": 4,
+        "name": "golden raisins, soaked in water",
+        "amount": 1,
+        "unit": "cup",
+        "category": "Seffa"
+      },
+      {
+        "id": 5,
+        "name": "unsalted butter",
+        "amount": 4,
+        "unit": "tablespoons",
+        "category": "Seffa"
+      },
+      {
+        "id": 6,
+        "name": "confectioners' sugar",
+        "amount": 1,
+        "unit": "cup",
+        "category": "Seffa"
+      },
+      {
+        "id": 7,
+        "name": "chicken, cut into pieces",
+        "amount": 1,
+        "unit": "kilogram",
+        "category": "Saffron Chicken/Meat"
+      },
+      {
+        "id": 8,
+        "name": "sweet onions, chopped medium",
+        "amount": 2,
+        "unit": "onion",
+        "category": "Saffron Chicken/Meat"
+      },
+      {
+        "id": 9,
+        "name": "ground ginger",
+        "amount": 1,
+        "unit": "tablespoon",
+        "category": "Saffron Chicken/Meat"
+      },
+      {
+        "id": 10,
+        "name": "white pepper",
+        "amount": 1,
+        "unit": "teaspoon",
+        "category": "Saffron Chicken/Meat"
+      },
+      {
+        "id": 11,
+        "name": "black pepper",
+        "amount": 0.5,
+        "unit": "teaspoon",
+        "category": "Saffron Chicken/Meat"
+      },
+      {
+        "id": 12,
+        "name": "cinnamon sticks",
+        "amount": 2,
+        "unit": "small",
+        "category": "Saffron Chicken/Meat"
+      },
+      {
+        "id": 13,
+        "name": "saffron threads, crumbled",
+        "amount": 1,
+        "unit": "teaspoon",
+        "category": "Saffron Chicken/Meat"
+      },
+      {
+        "id": 14,
+        "name": "turmeric",
+        "amount": 1,
+        "unit": "teaspoon",
+        "category": "Saffron Chicken/Meat"
+      },
+      {
+        "id": 15,
+        "name": "salt",
+        "amount": 2,
+        "unit": "teaspoons",
+        "category": "Saffron Chicken/Meat"
+      },
+      {
+        "id": 16,
+        "name": "unsalted butter",
+        "amount": 4,
+        "unit": "tablespoons",
+        "category": "Saffron Chicken/Meat"
+      },
+      {
+        "id": 17,
+        "name": "olive oil",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "Saffron Chicken/Meat"
+      },
+      {
+        "id": 18,
+        "name": "fresh cilantro, chopped",
+        "amount": 0.25,
+        "unit": "cup",
+        "category": "Saffron Chicken/Meat"
+      }
+    ],
+    "instructions": [
+      {
+        "number": 1,
+        "step": "Fill the base of a couscoussier with ample salted water, and bring to a boil over high heat.",
+        "category": "Steam the Couscous or Broken Vermicelli (Chaariya)"
+      },
+      {
+        "number": 2,
+        "step": "Reduce to a simmer, and proceed with steaming the couscous three times (add the raisins for the final steaming), or the broken vermicelli four to five times (add the raisins for the fourth steaming).",
+        "category": "Steam the Couscous or Broken Vermicelli (Chaariya)"
+      },
+      {
+        "number": 3,
+        "step": "Mix the chicken, lamb or beef with the onions, spices, butter, oil and cilantro in a Dutch oven or heavy-bottomed pot. Gently brown the chicken or meat over medium heat for about 10 minutes.",
+        "category": "Cook the Saffron Chicken, Lamb or Beef"
+      },
+      {
+        "number": 4,
+        "step": "If cooking chicken, don't add water as the chicken will braise in its own juices. If preparing lamb or beef, add enough water to just cover the meat.",
+        "category": "Cook the Saffron Chicken, Lamb or Beef"
+      },
+      {
+        "number": 5,
+        "step": "Cover the pot and cook over medium heat, stirring occasionally, until the meat is very tender. This will take about 1 hour for the chicken but may take longer for the lamb or beef. Avoid scorching the meat, and add a small amount of water to the lamb or beef during the cooking if necessary.",
+        "category": "Cook the Saffron Chicken, Lamb or Beef"
+      },
+      {
+        "number": 6,
+        "step": "When the chicken or meat has been cooked, reduce the liquids until a thick sauce has formed.",
+        "category": "Cook the Saffron Chicken, Lamb or Beef"
+      },
+      {
+        "number": 7,
+        "step": "Discard the cinnamon stick, and taste for seasoning. If desired, remove the chicken from the bones.",
+        "category": "Cook the Saffron Chicken, Lamb or Beef"
+      },
+      {
+        "number": 8,
+        "step": "Gently toss the steamed broken vermicelli or couscous with the butter and powdered sugar. Place about 1/3 of this mixture on a very large serving dish.",
+        "category": "To Serve Seffa Medfouna"
+      },
+      {
+        "number": 9,
+        "step": "Arrange the chicken or meat in the center, and cover with the sauce. Pile the rest of the couscous or vermicelli on top of the meat, using your hands to shape a dome.",
+        "category": "To Serve Seffa Medfouna"
+      },
+      {
+        "number": 10,
+        "step": "Decorate the mound of seffa in a vertical pattern with the cinnamon, ground almonds and powdered sugar. Serve immediately, with small bowls of powdered sugar, ground almonds, and cinnamon on the side.",
+        "category": "To Serve Seffa Medfouna"
+      }
+    ]
+  },
+  {
+    "title": "Pierogi Ruskies - Polish Dumplings",
+    "author": "Grandma Perla",
+    "occasion": "holidays",
+    "image": "https://www.thenomadicfitzpatricks.com/wp-content/uploads/2022/08/Featured-Image-Pin-22-720x720.jpg",
+    "ingredients": [
+        {
+        "id": 1,
+        "name": "flour plain",
+        "amount": 300,
+        "unit": "g",
+        "category": "PIEROGI DOUGH"
+        },
+        {
+        "id": 2,
+        "name": "salt",
+        "amount": 1,
+        "unit": "tsp",
+        "category": "PIEROGI DOUGH"
+        },
+        {
+        "id": 3,
+        "name": "unsalted butter",
+        "amount": 50,
+        "unit": "g",
+        "category": "PIEROGI DOUGH"
+        },
+        {
+        "id": 4,
+        "name": "water",
+        "amount": 125,
+        "unit": "ml",
+        "category": "PIEROGI DOUGH"
+        },
+        {
+        "id": 5,
+        "name": "large egg",
+        "amount": 1,
+        "unit": "piece",
+        "category": "PIEROGI DOUGH"
+        },
+        {
+        "id": 6,
+        "name": "potatoes",
+        "amount": 500,
+        "unit": "g",
+        "category": "PIEROGI FILLING"
+        },
+        {
+        "id": 7,
+        "name": "salt",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "PIEROGI FILLING"
+        },
+        {
+        "id": 8,
+        "name": "unsalted butter",
+        "amount": 30,
+        "unit": "g",
+        "category": "PIEROGI FILLING"
+        },
+        {
+        "id": 9,
+        "name": "shredded cheddar cheese",
+        "amount": 100,
+        "unit": "g",
+        "category": "PIEROGI FILLING"
+        },
+        {
+        "id": 10,
+        "name": "salt",
+        "amount": 0.25,
+        "unit": "tsp",
+        "category": "PIEROGI FILLING"
+        },
+        {
+        "id": 11,
+        "name": "black pepper",
+        "amount": 0.5,
+        "unit": "tsp",
+        "category": "PIEROGI FILLING"
+        },
+        {
+        "id": 12,
+        "name": "unsalted butter",
+        "amount": 30,
+        "unit": "g",
+        "category": "ONION BUTTER"
+        },
+        {
+        "id": 13,
+        "name": "onion, finely diced",
+        "amount": 1,
+        "unit": "piece",
+        "category": "ONION BUTTER"
+        },
+        {
+        "id": 14,
+        "name": "salt",
+        "amount": 0.5,
+        "unit": "tsp",
+        "category": "ONION BUTTER"
+        },
+        {
+        "id": 15,
+        "name": "salt",
+        "amount": 1,
+        "unit": "tbsp",
+        "category": "COOKING AND SERVING"
+        },
+        {
+        "id": 16,
+        "name": "unsalted butter",
+        "amount": 25,
+        "unit": "g",
+        "category": "COOKING AND SERVING"
+        },
+        {
+        "id": 17,
+        "name": "sour cream",
+        "amount": 250,
+        "unit": "g",
+        "category": "COOKING AND SERVING"
+        },
+        {
+        "id": 18,
+        "name": "parsley or chives, finely chopped",
+        "amount": 1,
+        "unit": "pinch",
+        "category": "COOKING AND SERVING"
+        }
+    ],
+    "instructions": [
+        {
+        "number": 1,
+        "step": "Boil potatoes – Put potato and 1 tbsp salt in a large saucepan. Add cold tap water so it's 3cm above potatoes. Bring to a boil on high heat then reduce heat to medium high and simmer for 15 minutes or until potatoes are soft.",
+        "category": "FILLING"
+        },
+        {
+        "number": 2,
+        "step": "Mash – Drain, then pass the potatoes through a potato ricer into a bowl (or use potato masher)",
+        "category": "FILLING"
+        },
+        {
+        "number": 3,
+        "step": "Cheese it – Immediately add butter, cheese, salt and pepper. Mix with a wooden spoon until fully combined.",
+        "category": "FILLING"
+        },
+        {
+        "number": 4,
+        "step": "Cooling – Spread out 1cm thick on a tray. Cover with cling wrap, pressing so it is fully in contact. Cool on the counter (~30 min) then refrigerate until cold (1 hour+).",
+        "category": "FILLING"
+        },
+        {
+        "number": 5,
+        "step": "Melt butter – Heat up the water and butter in a small saucepan over medium heat just until butter is melted, do not boil water. Turn off heat.",
+        "category": "PIEROGI DOUGH"
+        },
+        {
+        "number": 6,
+        "step": "Mix dough – Whisk the flour and salt in a mixing bowl. Make a well in the centre and then add the butter water plus egg. Mix to combine into a shaggy dough.",
+        "category": "PIEROGI DOUGH"
+        },
+        {
+        "number": 7,
+        "step": "Knead – Scrape out onto a lightly floured work surface. Knead for 5 minutes until the dough becomes smooth. You could also use your mixer.",
+        "category": "PIEROGI DOUGH"
+        },
+        {
+        "number": 8,
+        "step": "Rest – Wrap with cling wrap and leave on the counter for 30 minutes.",
+        "category": "PIEROGI DOUGH"
+        },
+        {
+        "number": 9,
+        "step": "Roll & cut – On a lightly floured surface, roll out the dough to 3mm. Cut out rounds using a 7.5 cm cutter. Do as many as you can, then gather surplus dough into a ball, wrap with cling wrap and set aside for later.",
+        "category": "WRAPPING PIEROGIS"
+        },
+        {
+        "number": 10,
+        "step": "Fill & wrap – Place 1 tablespoon of cheesy potato filling in the middle of a round. Dip finger with water and run along edge of half the circle. Fold dough over to enclose the filling and press to seal, making slight indents (no pleats).",
+        "category": "WRAPPING PIEROGIS"
+        },
+        {
+        "number": 11,
+        "step": "Wrap remaining – Place them on a lightly floured tray and continue to wrap remaining Pierogi (including rolling out the remaining dough). You should get ~30 pierogis.",
+        "category": "WRAPPING PIEROGIS"
+        },
+        {
+        "number": 12,
+        "step": "In a non stick skillet, melt the butter until foamy over medium heat. Add onion and salt, then cook, stirring regularly, for 10 to 15 minutes until golden on the edges. Scrape out into a bowl, then set aside to cool.",
+        "category": "ONION BUTTER SAUCE"
+        },
+        {
+        "number": 13,
+        "step": "Batch cooking – Directions below are for cooking and serving 10. Boil pierogis in batches of 10 to 12 max, they need space to bounce around in the water, and you need space to toss them in the butter.",
+        "category": "COOKING & SERVING PIEROGIS"
+        },
+        {
+        "number": 14,
+        "step": "Boil 5 minutes – Bring 3 litres of water to the boil with 1 tbsp salt. Lower 10 pierogis into the water. Cook for 5 minutes – they should be floating on the surface.",
+        "category": "COOKING & SERVING PIEROGIS"
+        },
+        {
+        "number": 15,
+        "step": "Reserve water & drain – Dip a jug into the water and scoop out 1 cup water. Then use a slotted spoon to transfer pierogi into a bowl.",
+        "category": "COOKING & SERVING PIEROGIS"
+        },
+        {
+        "number": 16,
+        "step": "Butter sauce – Melt butter in a large skillet over medium heat. Add 1/3 of the onion butter plus the cooked pierogis with 2 tablespoons of the reserved cooking water. Toss for 1 minute, still on the stove, until the pierogis are coated in the butter.",
+        "category": "COOKING & SERVING PIEROGIS"
+        },
+        {
+        "number": 17,
+        "step": "Serve – Slide onto a serving plate, scraping out every drop of butter. Sprinkle with parsley, add a dollop of sour cream. Eat and be happy!",
+        "category": "COOKING & SERVING PIEROGIS"
+        }
+    ]
+  }
+]
