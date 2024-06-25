@@ -267,5 +267,7 @@ export default {
 color: white !important; /* Ensure the text is white */
   text-decoration: none;   /* Remove underline */
 }
-
+.fake-class-for-commit-check{
+  display: none;
+}
 </style>
