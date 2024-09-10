@@ -51,7 +51,8 @@ export default {
       const response = await axios.post("http://localhost:3000/Login", {
         username: this.form.username,
         password: this.form.password
-      });
+      },
+      { withCredentials: true });
 
       if (response.data.success) {
         this.$root.store.login(this.form.username); // This should update $root.store.username

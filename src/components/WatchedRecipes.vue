@@ -6,7 +6,6 @@
   
 <script>
 import RecipePreviewList from "./RecipePreviewList.vue";
-import { getLastWatchedRecipes} from "../services/recipes.js";
 import axios from "axios";
 export default {
   name: "WatchedRecipes",
@@ -30,8 +29,9 @@ export default {
   methods: {
     async updateRecipes() {
         try {
-              // API call to your server's /random endpoint using axios
-            const response = await axios.get('http://localhost:3000/users/last-viewed', { withCredentials: true });
+          console.log("Fetching last viewed recipes from user:" + this.$root.store.username);
+          // API call to your server's /random endpoint using axios
+          const response = await axios.get('http://localhost:3000/users/last-viewed', { withCredentials: true });
           this.recipes = response.data;
         } catch (error) {
           console.error("Failed to fetch recipes:", error);
