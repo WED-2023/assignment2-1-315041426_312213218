@@ -29,6 +29,7 @@
 
 <script>
 import { mockAddFavorite, mockRemoveFavorite } from "../services/user.js";
+import axios from "axios";
 export default {
   mounted() {
     const img = new Image(); 
@@ -70,7 +71,15 @@ export default {
     },
     GoToFullRecipePage() {
     // Navigate to the RecipeViewPage and pass the recipe object as a prop
+    if (this.$root.store.username){
+      axios.post('http://localhost:3000/users/last-viewed', {recipe_id: this.recipe.id}, {withCredentials: true}).then((response) => {
+        console.log(response);
+      }).catch((error) => {
+        console.error("Failed to update last viewed recipes:", error);
+      });
+    }
     this.$router.push({ name: 'recipe', params: { recipe: this.recipe, recipeId : this.recipe.id } });
+
   }
 }
 };
@@ -86,9 +95,9 @@ export default {
   cursor: default;
   background-color: whitesmoke;
   padding: 10px;
-  width: 100%; /* Allow the preview to take full width of the container */
-  max-width: 1000px; /* Set a larger max-width to make it wider */
-  height: auto;
+  width: 50%; /* Allow the preview to take full width of the container */
+  max-width: 50px; /* Set a larger max-width to make it wider */
+  height: auto; 
   box-sizing: border-box;
   border-radius: 8px;
 }

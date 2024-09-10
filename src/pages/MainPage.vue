@@ -7,7 +7,7 @@
         <b-col cols="6">
           <RandomRecipes class="text-center" title="Random Recipes" style="text-shadow: #fff8f8 1px 0 30px" />
         </b-col>
-        <b-col v-if="!isLoggedIn" class="login-container">
+        <b-col v-if="!isAuthenticated" class="login-container">
           <LoginPage />
         </b-col>
         <b-col v-else cols="6">
@@ -32,21 +32,31 @@ export default {
   },
   data() {
     return {
-      isLoggedIn: false, // Default to not logged in
+      isLoggedIn: false
     };
+    },
+  computed:{
+    isAuthenticated(){
+      return !!this.$root.store.username;
+    },
   },
   mounted() {
-    this.checkLoginStatus();
+    // this.checkLoginStatus();
   },
   methods: {
-    async checkLoginStatus() {
-      try {
-        const response = await axios.get("http://localhost:3000/Login");
-        this.isLoggedIn = response.data.loggedIn; // Update based on the server's response
-      } catch (error) {
-        console.error("Error checking login status:", error);
-        this.isLoggedIn = false;
-      }
+    
+    // async checkLoginStatus() {
+    //   try {
+    //     const response = await axios.get("http://localhost:3000/Login");
+    //     this.isLoggedIn = response.data.loggedIn; // Update based on the server's response
+    //     console.log("LoggedIn status:", this.isLoggedIn);
+    //   } catch (error) {
+    //     console.error("Error checking login status:", error);
+    //     this.isLoggedIn = false;
+    //   }
+    // },
+    handleLoginSuccess() {
+      this.isLoggedIn = true;
     }
   }
 };
@@ -56,14 +66,14 @@ export default {
 .RandomRecipes {
   margin: 10px 0 5px;
 }
-.blur {
-  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-  filter: blur(2px);
-}
-::v-deep .blur .recipe-preview {
-  pointer-events: none;
-  cursor: default;
-}
+// .blur {
+//   -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+//   filter: blur(2px);
+// }
+// ::v-deep .blur .recipe-preview {
+//   pointer-events: none;
+//   cursor: default;
+// }
 .login-container {
   display: flex;
   justify-content: center;

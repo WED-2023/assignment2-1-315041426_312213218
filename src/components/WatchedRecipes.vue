@@ -1,27 +1,17 @@
 <template>
   <b-container class="col-watched">
-    <h3>
-      {{ title }}
-    </h3>
-<<<<<<< HEAD
-    <RecipePreviewList :recipes="recipes"></RecipePreviewList>
-=======
-    <b-row>
-      <b-col class="col-watched" v-for="r in recipes" :key="r.id">
-        <RecipePreview class="recipePreview" :recipe="r" />
-      </b-col>
-    </b-row>
->>>>>>> tmp
+    <RecipePreviewList :title="title" :recipes="recipes"></RecipePreviewList>
   </b-container>
 </template>
   
 <script>
-import RecipePreview from "./RecipePreview.vue";
+import RecipePreviewList from "./RecipePreviewList.vue";
 import { getLastWatchedRecipes} from "../services/recipes.js";
+import axios from "axios";
 export default {
-  name: "RecipePreviewList",
+  name: "WatchedRecipes",
   components: {
-    RecipePreview
+    RecipePreviewList
   },
   props: {
     title: {
@@ -39,25 +29,14 @@ export default {
   },
   methods: {
     async updateRecipes() {
-      try {
-        
-        // const response = await this.axios.get(
-        //   this.$root.store.server_domain + "/recipes/random",
-        // );
-
-        const amountToFetch = 1; // Set this to how many recipes you want to fetch
-        const response = getLastWatchedRecipes(amountToFetch);
-
-
-        console.log(response);
-        const recipes = response.data.recipes;
-        console.log(recipes);
-        this.recipes = [];
-        this.recipes.push(...recipes);
-      } catch (error) {
-        console.log(error);
+        try {
+              // API call to your server's /random endpoint using axios
+            const response = await axios.get('http://localhost:3000/users/last-viewed', { withCredentials: true });
+          this.recipes = response.data;
+        } catch (error) {
+          console.error("Failed to fetch recipes:", error);
+        }
       }
-    }
   }
 };
 </script>
