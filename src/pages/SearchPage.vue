@@ -112,7 +112,6 @@ export default {
     async searchRecipes() {
       // Simulate fetching search results from a server
       // Replace this with actual API call
-      console.log("search query is: ", this.searchQuery);
       const params = {
         searchQuery: this.searchQuery,
         cuisinesArray: this.selectedCuisine,
@@ -120,9 +119,7 @@ export default {
         intolerancesArray: this.selectedIntolerance,
         number: this.resultsLimit
       };
-      console.log("params are: ", params);
       const response = await axios.get('http://localhost:3000/recipes/search', { params});  
-      console.log("response from server is: ", response.data);
       this.searchResults = response.data;
     },
     clearResults() {
