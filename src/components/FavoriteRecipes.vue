@@ -1,38 +1,21 @@
 <template>
     <b-container fluid class="container-fluid-custom">
-      <h3 class="">
-        {{ title }}
-        <slot></slot>
-      </h3>
-      <b-row class="">
-        <b-col
-          v-for="r in recipes"
-          :key="r.id"
-          cols="12"
-          xl="4"
-          lg="4"
-          md="6"
-          sm="12"
-        >
-          <RecipePreview :recipe="r" />
-        </b-col>
-      </b-row>
+    <RecipePreviewList :title="title" :recipes="recipes"></RecipePreviewList>
     </b-container>
   </template>
   
   <script>
-  import RecipePreview from "./RecipePreview.vue";
-  import { mockGetUserFavoriteRecipes } from "../services/recipes.js";
-  
+  import RecipePreviewList from "./RecipePreviewList.vue";
+  import axios from "axios";
   export default {
     name: "FavoriteRecipes",
     components: {
-      RecipePreview
+      RecipePreviewList
     },
     props: {
       title: {
         type: String,
-        required: true
+        required: false
       }
     },
     data() {
@@ -47,9 +30,8 @@
       async getFavorites() {
         try {
           const amountToFetch = 6; // Fetch more recipes for testing
-          const response = mockGetUserFavoriteRecipes(amountToFetch);
-          console.log(response);
-          this.recipes = response.data.recipes;
+          const response = await axios.get('http://localhost:3000/users/favorites', { withCredentials: true }); //response already contains data only
+          this.recipes = response
         } catch (error) {
           console.error("Failed to fetch recipes:", error);
         }
