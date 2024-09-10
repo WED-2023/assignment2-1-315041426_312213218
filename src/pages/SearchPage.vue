@@ -39,7 +39,7 @@
               <b-form-select v-model="sortOption" :options="sortOptions" class="ml-2 sort-select"></b-form-select>
             </b-form-group>
         </div>
-        <SearchedRecipes :results="sortedResults" />
+        <RecipePreviewList :recipes="searchResults"></RecipePreviewList>
     </div>
   </div>
 </template>
@@ -51,11 +51,13 @@
 
 <script>
 import SearchedRecipes from '../components/SearchedRecipes.vue';
+import RecipePreviewList from '../components/RecipePreviewList.vue';
+import axios from 'axios';
 
 export default {
-  name: "RecipeSearch",
+  name: "SearchPage",
   components: {
-    SearchedRecipes
+    RecipePreviewList
   },
   data() {
     return {
@@ -68,9 +70,17 @@ export default {
       searchPerformed: false,
       sortOption: "",
       showFilters: false,
-      cuisines: ["Italian", "Chinese", "American", "Mexican"],
-      diets: ["Vegetarian", "Vegan", "Gluten Free", "Ketogenic"],
-      intolerances: ["Dairy", "Egg", "Gluten", "Peanut"],
+      cuisines: ["Asian","American","British"
+                ,"Cajun","Caribbean","Chinese"
+                ,"EasternEuropean","European","French"
+                ,"German","Greek","Indian"
+                ,"Irish","Italian","Japanese"
+                ,"Jewish","Korean","Latin American"
+                ,"Mediterranean","Mexican","Middle Eastern"
+                ,"Nordic","Southern","Spanish"
+                ,"Thai","Vietnamese"],
+      diets: ["Vegetarian", "Vegan", "Gluten Free", "Ketogenic", "Pescetarian","Paleo","Primal","Whole30","Low FODMAP"],
+      intolerances: ["Dairy", "Egg", "Gluten", "Peanut", "Grain","Peanut","Seafood","Sesame","Shellfish","Soy","Sulfite","Tree Nut","Wheat"],
       resultsLimits: [5, 10, 15],
       sortOptions: ["None", "Preparation Time", "Popularity"],
       isSearchButtonClicked: false,
@@ -99,11 +109,21 @@ export default {
       this.displayResults = true;
       this.searchRecipes();
     },
-    searchRecipes() {
+    async searchRecipes() {
       // Simulate fetching search results from a server
       // Replace this with actual API call
-      this.searchPerformed = true;
-      this.searchResults = [1]; // this is just a placeholder for now.
+      console.log("search query is: ", this.searchQuery);
+      const params = {
+        searchQuery: this.searchQuery,
+        cuisinesArray: this.selectedCuisine,
+        dietsArray: this.selectedDiet,
+        intolerancesArray: this.selectedIntolerance,
+        number: this.resultsLimit
+      };
+      console.log("params are: ", params);
+      const response = await axios.get('http://localhost:3000/recipes/search', { params});  
+      console.log("response from server is: ", response.data);
+      this.searchResults = response.data;
     },
     clearResults() {
       this.searchResults = [];
@@ -147,6 +167,11 @@ export default {
         searchResults: newResults
       }));
     }
+  },
+  watch:{
+    selectedCuisine(newVal, oldVal){
+      console.log("array of Cuisins is ", this.selectedCuisine);
+    },
   }
 };
 </script>
