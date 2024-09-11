@@ -51,26 +51,47 @@
       @ok="handleOk"
     >
       <form ref="form" @submit.stop.prevent="handleSubmit">
-        <b-form-group label="Recipe Name" label-for="name-input" :state="nameState">
-          <b-form-input id="name-input" v-model="recipe.name" required></b-form-input>
-          <b-form-invalid-feedback>Name is required</b-form-invalid-feedback>
+        <b-form-group label="Recipe Name" label-for="name-input">
+          <b-form-input id="name-input" v-model="recipe.name" required :state="nameState"></b-form-input>
+          <b-form-invalid-feedback v-show="!nameState">Name is required</b-form-invalid-feedback>
+        </b-form-group>
+        <b-form-group label="Time to Prepare (in minutes)" label-for="time-input">
+          <b-form-input id="time-input" v-model="recipe.time" type="number" min="1" required :state="timeState"></b-form-input>
+          <b-form-invalid-feedback v-show="!timeState">Time is required</b-form-invalid-feedback>
         </b-form-group>
 
         <b-form-group label="Ingredients" label-for="ingredients-input">
-          <div v-for="(ingredient, index) in recipe.ingredients" :key="index" class="mb-2">
-            <b-form-input v-model="recipe.ingredients[index]" placeholder="Enter ingredient" :class="{ 'is-invalid': ingredientsInvalid }"></b-form-input>
+          <div v-for="(ingredient, index) in recipe.ingredients" :key="`ingredient-${index}`" class="mb-2">
+            <b-form-input
+              id="'ingredient-input-' + index"
+              v-model="recipe.ingredients[index]"
+              placeholder="Enter ingredient"
+              :state="checkIngredientsValidity(ingredient)"
+            ></b-form-input>
+            <b-form-invalid-feedback v-show="!checkIngredientsValidity(ingredient)">
+              Each ingredient is required
+            </b-form-invalid-feedback>
           </div>
-          <b-button size="sm" @click="addIngredient">Add Ingredient</b-button>
-          <b-form-invalid-feedback v-if="ingredientsInvalid">At least one ingredient is required</b-form-invalid-feedback>
+          <b-button size="sm" variant="success" @click="addIngredient">Add Ingredient</b-button>
+          <b-button v-if="recipe.ingredients.length > 1" size = "sm" variant="danger" @click="removeIngredient">Remove Ingredient</b-button>
         </b-form-group>
 
         <b-form-group label="Instructions" label-for="instructions-input">
-          <div v-for="(instruction, index) in recipe.instructions" :key="index" class="mb-2">
-            <b-form-input v-model="recipe.instructions[index]" placeholder="Enter instruction" :class="{ 'is-invalid': instructionsInvalid }"></b-form-input>
+          <div v-for="(instruction, index) in recipe.instructions" :key="`instruction-${index}`" class="mb-2">
+            <b-form-input
+              id="'instruction-input-' + index"
+              v-model="recipe.instructions[index]"
+              placeholder="Enter instruction"
+              :state="checkInstructionsValidity(instruction)"
+            ></b-form-input>
+            <b-form-invalid-feedback v-show="!checkInstructionsValidity(instruction)">
+              Each instruction is required
+            </b-form-invalid-feedback>
           </div>
-          <b-button size="sm" @click="addInstruction">Add Instruction</b-button>
-          <b-form-invalid-feedback v-if="instructionsInvalid">At least one instruction is required</b-form-invalid-feedback>
+          <b-button size="sm" variant="success" @click="addInstruction">Add Instruction</b-button>
+          <b-button v-if="recipe.instructions.length > 1" size = "sm" variant="danger" @click="removeInstruction">Remove Instruction</b-button>
         </b-form-group>
+
 
         <b-form-group>
           <b-form-checkbox v-model="recipe.glutenFree">Gluten Free</b-form-checkbox>
@@ -88,19 +109,39 @@
 export default {
   name: "App",
   data() {
-    return {
-      recipe: {
-        name: '',
-        ingredients: [''],
-        instructions: [''],
-        glutenFree: false,
-        vegan: false,
-      },
-      nameState: null,
-      ingredientsInvalid: false,
-      instructionsInvalid: false,
-    };
+  return {
+    recipe: {
+      name: '',
+      time: 0,
+      ingredients: [''],
+      instructions: [''],
+      glutenFree: false,
+      vegan: false,
+    },
+    nameValidated: false,
+    timeValidated: false,
+    ingredientsValidated: false,
+    instructionsValidated: false,
+  };
+}
+,
+  computed: {
+  nameState() {
+    // I want to return false if the input field is empty
+    console.log("Watcher for input field returns:", this.recipe.name.trim() !== '');
+    return this.recipe.name.trim() !== ''; 
   },
+  timeState() {
+    console.log("Watcher for time field returns:", this.recipe.time > 0);
+    return this.recipe.time > 0 
+  },
+  ingredientsState() {
+    return this.recipe.ingredients.some(ingredient => ingredient.trim() !== '') ? true : false;
+  },
+  instructionsState() {
+    return this.recipe.instructions.some(instruction => instruction.trim() !== '') ? true : false;
+  }
+},
   methods: {
     Logout() {
       this.$root.store.logout();
@@ -113,11 +154,18 @@ export default {
       return this.$root.store.username !== undefined;
     },
     checkFormValidity() {
-      const valid = this.$refs.form.checkValidity();
-      this.nameState = valid;
-      this.ingredientsInvalid = this.recipe.ingredients.every(ingredient => ingredient.trim() === '');
-      this.instructionsInvalid = this.recipe.instructions.every(instruction => instruction.trim() === '');
-      return valid && !this.ingredientsInvalid && !this.instructionsInvalid;
+      const hasName = this.recipe.name.trim() !== '';
+      const hasTime = this.recipe.time > 0;
+      const hasIngredients = this.recipe.ingredients.some(ingredient => ingredient.trim() !== '');
+      const hasInstructions = this.recipe.instructions.some(instruction => instruction.trim() !== '');
+
+      // Set validated flags to true to show feedback if invalid
+      this.nameValidated = !hasName;
+      this.timeValidated = !hasTime;
+      this.ingredientsValidated = !hasIngredients;
+      this.instructionsValidated = !hasInstructions;
+      console.log("Form validity:", hasName, hasTime, hasIngredients, hasInstructions);
+      return hasName && hasTime && hasIngredients && hasInstructions;
     },
     resetModal() {
       this.recipe = {
@@ -127,27 +175,27 @@ export default {
         glutenFree: false,
         vegan: false,
       };
-      this.nameState = null;
-      this.ingredientsInvalid = false;
-      this.instructionsInvalid = false;
     },
     handleOk(bvModalEvent) {
       // Prevent modal from closing
-      bvModalEvent.preventDefault();
-      // Trigger submit handler
+      if (!this.checkFormValidity()) {
+        bvModalEvent.preventDefault();
+        console.log("Invalid form submission");
+        return; // Prevent form submission if invalid
+      }
+      // if the form is valid proceed with form submission logic
       this.handleSubmit();
     },
     handleSubmit() {
-      // Exit when the form isn't valid
-      if (!this.checkFormValidity()) {
-        return;
-      }
-      // Here you can handle the form submission, e.g., send the data to the server
-      console.log("Recipe submitted:", this.recipe);
-      // Hide the modal manually
-      this.$nextTick(() => {
-        this.$bvModal.hide('modal-prevent-closing');
-      });
+    if (!this.checkFormValidity()) {
+      console.log("Invalid form submission");
+      return; // Prevent form submission if invalid
+    }
+    // Proceed with form submission logic, e.g., sending data to server
+    console.log(" form is valid , Recipe submitted:", this.recipe);
+
+    // close modal:
+    this.$bvModal.hide('modal-prevent-closing');
     },
     addIngredient() {
       this.recipe.ingredients.push('');
@@ -155,12 +203,25 @@ export default {
     addInstruction() {
       this.recipe.instructions.push('');
     },
-    navigateTo(routeName) {
-  if (this.$route.name !== routeName) {
-    this.$router.push({ name: routeName });
-  }
-}
+    removeIngredient() {
+      this.recipe.ingredients.pop();
+    },
+    removeInstruction() {
+      this.recipe.instructions.pop();
+    },
+    checkIngredientsValidity(ingredient) {
+    return ingredient.trim() !== ''; // Returns false if invalid, true if valid
+    },
+    checkInstructionsValidity(instruction) {
+      // I want to return true if at least one input field is not empty
+      return instruction.trim() !== ''; // Returns false if invalid, true if valid
 
+    },
+    navigateTo(routeName) {
+    if (this.$route.name !== routeName) {
+      this.$router.push({ name: routeName });
+    }
+    }
   }
 };
 </script>
