@@ -47,7 +47,6 @@
       ref="modal"
       title="Submit Your Recipe"
       @show="resetModal"
-      @hidden="resetModal"
       @ok="handleOk"
     >
       <form ref="form" @submit.stop.prevent="handleSubmit">
@@ -56,7 +55,7 @@
           <b-form-invalid-feedback v-show="!nameState">Name is required</b-form-invalid-feedback>
         </b-form-group>
         <b-form-group label="Time to Prepare (in minutes)" label-for="time-input">
-          <b-form-input id="time-input" v-model="recipe.time" type="number" min="1" required :state="timeState"></b-form-input>
+          <b-form-input id="time-input" v-model="recipe.time_to_make" type="number" min="1" required :state="timeState"></b-form-input>
           <b-form-invalid-feedback v-show="!timeState">Time is required</b-form-invalid-feedback>
         </b-form-group>
 
@@ -94,7 +93,7 @@
 
 
         <b-form-group>
-          <b-form-checkbox v-model="recipe.glutenFree">Gluten Free</b-form-checkbox>
+          <b-form-checkbox v-model="recipe.gluten_free">Gluten Free</b-form-checkbox>
           <b-form-checkbox v-model="recipe.vegan">Vegan</b-form-checkbox>
         </b-form-group>
       </form>
@@ -106,16 +105,17 @@
 
 
 <script>
+import axios from 'axios';
 export default {
   name: "App",
   data() {
   return {
     recipe: {
       name: '',
-      time: 0,
+      time_to_make: 0,
       ingredients: [''],
       instructions: [''],
-      glutenFree: false,
+      gluten_free: false,
       vegan: false,
     },
     nameValidated: false,
@@ -133,7 +133,7 @@ export default {
   },
   timeState() {
     console.log("Watcher for time field returns:", this.recipe.time > 0);
-    return this.recipe.time > 0 
+    return this.recipe.time_to_make > 0 
   },
   ingredientsState() {
     return this.recipe.ingredients.some(ingredient => ingredient.trim() !== '') ? true : false;
@@ -155,7 +155,7 @@ export default {
     },
     checkFormValidity() {
       const hasName = this.recipe.name.trim() !== '';
-      const hasTime = this.recipe.time > 0;
+      const hasTime = this.recipe.time_to_make > 0;
       const hasIngredients = this.recipe.ingredients.some(ingredient => ingredient.trim() !== '');
       const hasInstructions = this.recipe.instructions.some(instruction => instruction.trim() !== '');
 
@@ -169,11 +169,12 @@ export default {
     },
     resetModal() {
       this.recipe = {
-        name: '',
-        ingredients: [''],
-        instructions: [''],
-        glutenFree: false,
+        name: "",
+        ingredients: [""],
+        instructions: [""],
+        gluten_free: false,
         vegan: false,
+        time_to_make: 0,
       };
     },
     handleOk(bvModalEvent) {
@@ -186,17 +187,33 @@ export default {
       // if the form is valid proceed with form submission logic
       this.handleSubmit();
     },
-    handleSubmit() {
+
+  async handleSubmit() {
     if (!this.checkFormValidity()) {
       console.log("Invalid form submission");
       return; // Prevent form submission if invalid
-    }
-    // Proceed with form submission logic, e.g., sending data to server
-    console.log(" form is valid , Recipe submitted:", this.recipe);
+      }
 
-    // close modal:
-    this.$bvModal.hide('modal-prevent-closing');
-    },
+    // Prepare recipe data
+    const recipeData = {
+    recipe_name: this.recipe.name,
+    time_to_make: this.recipe.time_to_make,
+    ingredients: this.recipe.ingredients,
+    instructions: this.recipe.instructions,
+    vegan: this.recipe.vegan,
+    gluten_free: this.recipe.gluten_free,
+    };
+    console.log("Recipe data sent to server:", recipeData);
+    // Send POST request to server
+    try{
+      const response = await axios.post('http://localhost:3000/users/my-recipes', recipeData, { withCredentials: true });
+      console.log("response is:", response); 
+      this.$bvModal.hide('modal-prevent-closing');
+      }
+    catch(error){
+      console.error("Failed to submit recipe:", error);
+      }   
+  },  
     addIngredient() {
       this.recipe.ingredients.push('');
     },
@@ -223,6 +240,7 @@ export default {
     }
     }
   }
+
 };
 </script>
 
