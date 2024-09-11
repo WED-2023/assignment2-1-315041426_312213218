@@ -8,7 +8,7 @@
         :key="r.id"
         cols="12"
       >
-        <RecipePreview class="recipePreview" :recipe="r" />
+        <RecipePreview class="recipePreview" :recipe="r"  />
       </b-col>
     </b-row>
   </b-container>

@@ -32,6 +32,7 @@ import { mockAddFavorite, mockRemoveFavorite } from "../services/user.js";
 import axios from "axios";
 export default {
   mounted() {
+    this.checkFavoriteStatus();
     const img = new Image(); 
     img.src = this.recipe.image;
     img.onload = () => {
@@ -47,6 +48,7 @@ export default {
       isFavorite: false
     };
   },
+
   props: {
     recipe: {
       type: Object,
@@ -54,20 +56,41 @@ export default {
     }
   },
   methods: {
+    async checkFavoriteStatus() {
+      try {
+        const response = await axios.get(`http://localhost:3000/users/favorites/${this.recipe.id}`, {withCredentials: true});
+        console.log(response);
+        this.isFavorite = response.data.isFavorite;
+      } catch (error) {
+        console.error("Failed to check if the recipe is in favorites:", error);
+      }
+    },
+
     toggleFavorite(event) {
       event.stopPropagation();
       this.isFavorite ? this.removeFromFavorites() : this.addToFavorites();
     },
-    addToFavorites() {
-      this.isFavorite = true;
-     const response =  mockAddFavorite(this.recipe.id); // Simulate adding to backend
-     console.log(response.response.data.message);
-     
+    async addToFavorites() {
+      try {
+        const response =  await axios.post('http://localhost:3000/users/favorites', {recipe_id: this.recipe.id}, {withCredentials: true})
+        this.isFavorite = true;
+        }
+      catch (error)
+        {
+        console.error("Failed to add to favorites:", error);
+        }
     },
-    removeFromFavorites() {
-      this.isFavorite = false;
-      const response = mockRemoveFavorite(this.recipe.id); // Simulate removing from backend
-      console.log(response.response.data.message);
+    async removeFromFavorites() {
+      try{
+        const response = await axios.delete('http://localhost:3000/users/favorites',{
+          data: {recipe_id: this.recipe.id},
+          withCredentials: true
+          });
+          this.isFavorite = false;
+      }
+      catch (error){
+        console.error("Failed to remove from favorites:", error);
+      }
     },
     GoToFullRecipePage() {
     // Navigate to the RecipeViewPage and pass the recipe object as a prop

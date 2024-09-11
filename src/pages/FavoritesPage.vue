@@ -8,7 +8,6 @@
 
 <script>
 import RecipePreviewList from '../components/RecipePreviewList.vue';
-import FavoriteRecipes from '../components/FavoriteRecipes.vue';
 import axios from 'axios';
 export default {
   name: 'FavoritesPage',
