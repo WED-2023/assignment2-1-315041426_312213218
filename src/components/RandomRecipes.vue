@@ -32,7 +32,7 @@
     methods: {
       async updateRecipes() {
         try {
-          const amountToFetch = 3; 
+          const amountToFetch = 1; 
               // API call to your server's /random endpoint using axios
             const response = await axios.get('http://localhost:3000/recipes/random',{
             params: { number: amountToFetch },

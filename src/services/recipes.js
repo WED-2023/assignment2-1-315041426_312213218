@@ -5,6 +5,10 @@ import recipe_preview from "../assets/mocks/recipe_preview.json";
 
 export function mockGetRecipesPreview(amount = 1) {
   let recipes = [];
+
+  // Don't use for please!!
+  // use Map or forEach. 
+  // also, recepies can be a const .
   for(let i = 0; i < amount; i++){
     recipes.push(recipe_preview);
   }
@@ -16,6 +20,7 @@ export function mockGetRecipeFullDetails(recipeId) {
     return { data: { recipe: recipe_full_view } } ;
   }
   
+  // please use some generic method, so it'll be used both in mockGetRecipesPreview and in getLastWatchedRecipes
   export function getLastWatchedRecipes(amount = 3) {
     let recipes = [];
     for(let i = 0; i < amount; i++){

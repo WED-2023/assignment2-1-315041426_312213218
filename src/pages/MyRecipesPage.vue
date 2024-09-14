@@ -1,19 +1,64 @@
 <template>
     <div>
       <div class="container-fluid-custom">
-        <h1 class="title text-center">My Recipes</h1>
-        <br>
-        <MyRecipes class="text-center" title="" />
+        <RecipePreviewList class="text-center" title="My Recipes" :recipes="recipes"></RecipePreviewList>
       </div>
     </div>
   </template>
   
   <script>
-  import MyRecipes from '../components/MyRecipes.vue';
+import RecipePreviewList from '../components/RecipePreviewList.vue';
+import axios from 'axios';
   
   export default {
     components: {
-      MyRecipes
+      RecipePreviewList
+    },
+    props:{
+      title: {
+        type: String,
+        required: false
+      }
+    },
+    data(){
+      return {
+        recipes: []
+      };
+    },
+    mounted(){
+      this.getMyRecipes();
+    },
+    methods:{
+      async getMyRecipes(){
+        try{
+          const response = await axios.get('http://localhost:3000/users/my-recipes', { withCredentials: true });
+          this.recipes = response.data.map(this.transformRecipeData);
+          // console.log(response.data);
+        } catch (error){
+          console.error("Failed to fetch recipes:", error);
+      }
+      },
+      transformRecipeData(dbRecipe) {
+        return {
+          title: dbRecipe.recipeName,
+          id: dbRecipe.RecipeID,
+          aggregateLikes: "N/A",
+          readyInMinutes: dbRecipe.time_to_make,
+          extendedIngredients: dbRecipe.Ingredients.map((ingredient, index) => ({
+            id: index + 1, // Create a unique ID for each ingredient
+            original: ingredient
+          })),
+          analyzedInstructions: [
+            {
+              steps: dbRecipe.Instructions.map((instruction) => ({
+                step: instruction
+              }))
+            }
+          ],
+          vegan: dbRecipe.vegan === 1, // Convert to boolean
+          glutenFree: dbRecipe.glutenFree === 1 // Convert to boolean
+        };
+}
     }
   };
   </script>
