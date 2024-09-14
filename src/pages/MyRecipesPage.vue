@@ -67,7 +67,7 @@ import axios from 'axios';
   .container-fluid-custom {
     padding-left: 2%;
     padding-right: 2%;
-    margin-top: 3%;
+    margin-top: 7%;
   }
   .title {
     text-shadow: #fff8f8 1px 0 30px;
